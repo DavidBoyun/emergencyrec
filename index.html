@@ -247,7 +247,12 @@
       background: var(--accent-2);
       box-shadow: 0 0 0 0 rgba(255,51,51,0.72);
       animation: pulse 1.8s infinite;
+      animation-play-state: paused;
       margin: 14px 0 10px;
+    }
+
+    .phone-rec-content.visible .rec-dot {
+      animation-play-state: running;
     }
 
     @keyframes pulse {
@@ -286,7 +291,13 @@
       border-radius: 2px;
       background: linear-gradient(180deg, var(--accent-2), rgba(255,51,51,0.3));
       animation: waveAnim 1.2s ease-in-out infinite alternate;
+      animation-play-state: paused;
       height: var(--h, 40%);
+      transform: scaleY(0.2);
+    }
+
+    .phone-rec-content.visible .wave-bar {
+      animation-play-state: running;
     }
 
     @keyframes waveAnim {
@@ -889,38 +900,104 @@
       color: #7a7a92;
     }
 
-    /* ===== PHONE TAP ANIMATION ===== */
-    .phone-tap {
+    /* ===== PHONE SEQUENCE ANIMATION ===== */
+    .phone-home {
       position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.2);
-      animation: tap-anim 3s ease-in-out infinite;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      z-index: 2;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      border-radius: 22px;
+      background:
+        radial-gradient(200px 160px at 50% 40%, rgba(30,30,60,0.6), transparent),
+        #090b16;
+    }
+
+    .phone-home.hidden {
+      opacity: 0;
+      transform: scale(1.05);
       pointer-events: none;
     }
 
-    .phone-tap::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
+    .phone-home-label {
+      font-size: 11px;
+      color: #7a7a92;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes tap-anim {
-      0%, 100% { opacity: 0; transform: translateX(-50%) scale(0.8); }
-      10% { opacity: 1; transform: translateX(-50%) scale(1); }
-      20% { opacity: 0.7; transform: translateX(-50%) scale(1.3); }
-      30% { opacity: 0; transform: translateX(-50%) scale(1.5); }
-      31%, 100% { opacity: 0; }
+    .phone-app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #cc0000, #ff3333);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(204,0,0,0.4);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .phone-app-name {
+      font-size: 12px;
+      color: #c8c8d8;
+      font-weight: 600;
+    }
+
+    .phone-tap-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.5);
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .phone-tap-ring.active {
+      animation: tap-ring 0.6s ease-out forwards;
+    }
+
+    @keyframes tap-ring {
+      0% { opacity: 0.8; transform: scale(0.9); }
+      100% { opacity: 0; transform: scale(1.4); }
+    }
+
+    .phone-rec-content {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+    }
+
+    .phone-rec-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .phone-speed-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 700;
+      color: #9cf0c8;
+      background: rgba(39,194,129,0.15);
+      border: 1px solid rgba(39,194,129,0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.3s;
+      white-space: nowrap;
+    }
+
+    .phone-speed-badge.visible {
+      opacity: 1;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -1006,27 +1083,40 @@
       </div>
 
       <aside class="fade-up" style="display:flex; flex-direction:column; gap:14px;">
-        <div class="phone" role="img" aria-label="녹음 진행 화면 예시">
-          <div class="phone-screen">
-            <div class="phone-status">REC</div>
-            <div class="rec-dot"></div>
-            <div class="phone-timer latin">00:07</div>
-            <p class="phone-label">즉시 녹음 중 · 스텔스 모드 대기</p>
-            <div class="phone-tap" aria-hidden="true"></div>
-            <div class="waveform">
-              <div class="wave-bar" style="--h:35%; animation-delay:0s;"></div>
-              <div class="wave-bar" style="--h:65%; animation-delay:0.1s;"></div>
-              <div class="wave-bar" style="--h:50%; animation-delay:0.2s;"></div>
-              <div class="wave-bar" style="--h:80%; animation-delay:0.3s;"></div>
-              <div class="wave-bar" style="--h:40%; animation-delay:0.15s;"></div>
-              <div class="wave-bar" style="--h:70%; animation-delay:0.25s;"></div>
-              <div class="wave-bar" style="--h:55%; animation-delay:0.35s;"></div>
-              <div class="wave-bar" style="--h:85%; animation-delay:0.05s;"></div>
-              <div class="wave-bar" style="--h:45%; animation-delay:0.2s;"></div>
-              <div class="wave-bar" style="--h:60%; animation-delay:0.3s;"></div>
-              <div class="wave-bar" style="--h:75%; animation-delay:0.1s;"></div>
-              <div class="wave-bar" style="--h:42%; animation-delay:0.25s;"></div>
+        <div class="phone" role="img" aria-label="녹음 시작 과정 시연">
+          <div class="phone-screen" id="phone-screen">
+            <!-- Home screen overlay -->
+            <div class="phone-home" id="phone-home">
+              <span class="phone-home-label">홈 화면</span>
+              <div class="phone-app-icon" id="phone-icon">
+                <span>&#x1F534;</span>
+                <div class="phone-tap-ring" id="tap-ring"></div>
+              </div>
+              <span class="phone-app-name">긴급녹음</span>
             </div>
+
+            <!-- REC screen (revealed after tap) -->
+            <div class="phone-rec-content" id="rec-content">
+              <div class="phone-status">REC</div>
+              <div class="rec-dot"></div>
+              <div class="phone-timer latin" id="phone-timer-el">00:00</div>
+              <p class="phone-label">즉시 녹음 중 · 스텔스 모드 대기</p>
+              <div class="waveform" id="waveform-el">
+                <div class="wave-bar" style="--h:35%; animation-delay:0s;"></div>
+                <div class="wave-bar" style="--h:65%; animation-delay:0.1s;"></div>
+                <div class="wave-bar" style="--h:50%; animation-delay:0.2s;"></div>
+                <div class="wave-bar" style="--h:80%; animation-delay:0.3s;"></div>
+                <div class="wave-bar" style="--h:40%; animation-delay:0.15s;"></div>
+                <div class="wave-bar" style="--h:70%; animation-delay:0.25s;"></div>
+                <div class="wave-bar" style="--h:55%; animation-delay:0.35s;"></div>
+                <div class="wave-bar" style="--h:85%; animation-delay:0.05s;"></div>
+                <div class="wave-bar" style="--h:45%; animation-delay:0.2s;"></div>
+                <div class="wave-bar" style="--h:60%; animation-delay:0.3s;"></div>
+                <div class="wave-bar" style="--h:75%; animation-delay:0.1s;"></div>
+                <div class="wave-bar" style="--h:42%; animation-delay:0.25s;"></div>
+              </div>
+            </div>
+            <div class="phone-speed-badge latin" id="speed-badge">0.5초 시작 완료</div>
           </div>
         </div>
         <div class="hero-kpis">
@@ -1352,16 +1442,65 @@
       if (el1) el1.textContent = installCount;
       if (el2) el2.textContent = installCount;
 
-      /* Phone timer count-up */
-      var timerEl = document.querySelector('.phone-timer');
-      if (timerEl) {
-        var sec = 0;
-        setInterval(function () {
-          sec = (sec + 1) % 600;
-          var m = String(Math.floor(sec / 60)).padStart(2, '0');
-          var s = String(sec % 60).padStart(2, '0');
-          timerEl.textContent = m + ':' + s;
+      /* Phone sequence animation: home → tap → REC */
+      var phoneHome = document.getElementById('phone-home');
+      var recContent = document.getElementById('rec-content');
+      var tapRing = document.getElementById('tap-ring');
+      var speedBadge = document.getElementById('speed-badge');
+      var phoneTimerEl = document.getElementById('phone-timer-el');
+      var phoneSec = 0;
+      var phoneInterval = null;
+
+      function startPhoneTimer() {
+        phoneSec = 0;
+        if (phoneTimerEl) phoneTimerEl.textContent = '00:00';
+        phoneInterval = setInterval(function () {
+          phoneSec++;
+          var m = String(Math.floor(phoneSec / 60)).padStart(2, '0');
+          var s = String(phoneSec % 60).padStart(2, '0');
+          if (phoneTimerEl) phoneTimerEl.textContent = m + ':' + s;
         }, 1000);
+      }
+
+      function stopPhoneTimer() {
+        if (phoneInterval) { clearInterval(phoneInterval); phoneInterval = null; }
+      }
+
+      function runPhoneSequence() {
+        /* Phase 0: Reset to home screen */
+        if (phoneHome) phoneHome.classList.remove('hidden');
+        if (recContent) recContent.classList.remove('visible');
+        if (speedBadge) speedBadge.classList.remove('visible');
+        if (tapRing) tapRing.classList.remove('active');
+        stopPhoneTimer();
+
+        /* Phase 1 (1.5s): Show home screen, then tap */
+        setTimeout(function () {
+          if (tapRing) {
+            tapRing.classList.add('active');
+          }
+        }, 1500);
+
+        /* Phase 2 (2.1s): Home fades out, REC appears */
+        setTimeout(function () {
+          if (phoneHome) phoneHome.classList.add('hidden');
+          if (recContent) recContent.classList.add('visible');
+          startPhoneTimer();
+        }, 2100);
+
+        /* Phase 3 (2.6s): Speed badge appears */
+        setTimeout(function () {
+          if (speedBadge) speedBadge.classList.add('visible');
+        }, 2600);
+
+        /* Phase 4 (9s): Loop back to home */
+        setTimeout(function () {
+          runPhoneSequence();
+        }, 9000);
+      }
+
+      if (phoneHome && recContent) {
+        runPhoneSequence();
       }
 
       if (!window.gsap || !window.ScrollTrigger) return;
