@@ -1,12 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>긴급녹음 - 위급상황 즉시 녹음 앱 | 증거 녹음, 음성 녹음기</title>
   <meta name="description" content="위급한 순간 0.5초 즉시 녹음으로 증거를 남기세요. 동탄·쯔양 등 실제 사건이 증명한 긴급 대응 앱. 무료 시작, Pro 5,900원 일회성으로 무제한 해제." />
-  <meta property="og:title" content="긴급녹음 - 위급상황 즉시 녹음 앱 | 증거 녹음, 음성 녹음기" />
-  <meta property="og:description" content="위급한 순간 0.5초 즉시 녹음으로 증거를 남기세요. 실제 사건 기반으로 설계된 증거 특화 긴급 녹음 앱." />
+  <meta property="og:title" content="긴급녹음 - 위급상황 즉시 녹음 앱" />
+  <meta property="og:description" content="위급한 순간 0.5초 즉시 녹음. 실제 사건 기반 증거 특화 긴급 녹음 앱." />
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://emergencyrecorder.com" />
@@ -31,23 +31,24 @@
       --text-muted: #b7b7c8;
       --accent: #cc0000;
       --accent-2: #ff3333;
+      --danger: #ff3333;
+      --danger-soft: rgba(255,51,51,0.07);
+      --danger-border: rgba(255,51,51,0.25);
+      --success: #27c281;
+      --success-soft: rgba(39,194,129,0.07);
+      --success-border: rgba(39,194,129,0.3);
       --ok: #27c281;
-      --warn: #f7b500;
       --radius: 18px;
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      --maxw: 1140px;
+      --shadow: 0 20px 40px rgba(0,0,0,0.4);
+      --maxw: 1080px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      margin: 0;
-      padding: 0;
       background:
-        radial-gradient(1200px 500px at 85% -10%, rgba(255, 51, 51, 0.18), transparent 60%),
-        radial-gradient(900px 460px at 0% 0%, rgba(204, 0, 0, 0.16), transparent 65%),
+        radial-gradient(1200px 500px at 85% -10%, rgba(255,51,51,0.18), transparent 60%),
+        radial-gradient(900px 460px at 0% 0%, rgba(204,0,0,0.16), transparent 65%),
         linear-gradient(180deg, var(--bg-0), var(--bg-1) 46%, var(--bg-2));
       color: var(--text);
       font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -56,15 +57,10 @@
       scroll-behavior: smooth;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; padding: 0; }
 
-    .latin,
-    .num,
-    .price,
-    .counter-value {
+    .latin, .num, .price, .counter-value {
       font-family: "Poppins", "Pretendard", sans-serif;
     }
 
@@ -74,7 +70,7 @@
     }
 
     .section {
-      padding: 74px 0;
+      padding: 64px 0;
       position: relative;
     }
 
@@ -83,16 +79,16 @@
       align-items: center;
       padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(255, 51, 51, 0.12);
-      border: 1px solid rgba(255, 51, 51, 0.38);
+      background: rgba(255,51,51,0.12);
+      border: 1px solid rgba(255,51,51,0.38);
       color: #ffd0d0;
       font-size: 13px;
       font-weight: 700;
     }
 
     .section-title {
-      margin: 14px 0 12px;
-      font-size: clamp(28px, 6vw, 50px);
+      margin: 14px 0 10px;
+      font-size: clamp(26px, 5.5vw, 44px);
       line-height: 1.15;
       letter-spacing: -0.02em;
       color: var(--text-strong);
@@ -100,7 +96,7 @@
 
     .section-sub {
       margin: 0;
-      max-width: 68ch;
+      max-width: 62ch;
       color: var(--text-muted);
       font-size: 17px;
     }
@@ -109,7 +105,7 @@
       appearance: none;
       border: none;
       border-radius: 12px;
-      padding: 14px 18px;
+      padding: 14px 20px;
       min-height: 50px;
       font-size: 16px;
       font-weight: 800;
@@ -118,25 +114,30 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform .2s ease, filter .2s ease;
+      gap: 8px;
+      transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
       cursor: pointer;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      filter: brightness(1.06);
+      filter: brightness(1.08);
     }
 
     .btn-primary {
       color: #fff;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 14px 24px rgba(204, 0, 0, 0.32);
+      box-shadow: 0 14px 24px rgba(204,0,0,0.32);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 18px 32px rgba(204,0,0,0.42);
     }
 
     .btn-secondary {
       color: var(--text-strong);
       border: 1px solid #3a3a5f;
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255,255,255,0.02);
     }
 
     .grid {
@@ -149,7 +150,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 20px;
+      padding: 24px;
     }
 
     .fade-up {
@@ -157,64 +158,86 @@
       transform: translateY(28px);
     }
 
+    /* ===== 1. HERO ===== */
     header.hero {
-      padding: 28px 0 64px;
+      padding: 24px 0 48px;
     }
 
     .hero-wrap {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 14px;
-      align-items: stretch;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .micro-scenario {
+      font-size: 15px;
+      font-style: italic;
+      color: #ffa0a0;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      opacity: 0.9;
     }
 
     .hero h1 {
-      margin: 12px 0 14px;
-      font-size: clamp(34px, 7vw, 64px);
-      line-height: 1.05;
+      margin: 10px 0 14px;
+      font-size: clamp(32px, 6.5vw, 56px);
+      line-height: 1.08;
       letter-spacing: -0.03em;
       color: var(--text-strong);
     }
 
-    .hero p {
-      margin: 0;
-      font-size: clamp(16px, 2.2vw, 20px);
+    .hero-sub {
+      margin: 0 0 4px;
+      font-size: clamp(15px, 2vw, 18px);
       color: var(--text-muted);
+      line-height: 1.6;
     }
 
     .hero-cta {
-      margin-top: 24px;
+      margin-top: 20px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .mockup {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 14px;
+    .friction-text {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #8a8aa0;
     }
 
     .phone {
-      width: min(290px, 72vw);
+      width: min(270px, 68vw);
       margin: 0 auto;
       border-radius: 30px;
-      padding: 14px;
+      padding: 12px;
       border: 1px solid #34345a;
       background: #0f1020;
-      box-shadow: inset 0 0 0 1px #1f2040, 0 30px 50px rgba(0, 0, 0, 0.45);
+      box-shadow: inset 0 0 0 1px #1f2040, 0 30px 50px rgba(0,0,0,0.45);
     }
 
     .phone-screen {
       border-radius: 22px;
-      padding: 18px;
-      min-height: 360px;
+      padding: 20px 16px;
+      min-height: 320px;
       background:
-        radial-gradient(300px 220px at 50% 10%, rgba(255, 51, 51, 0.22), transparent),
+        radial-gradient(280px 200px at 50% 10%, rgba(255,51,51,0.22), transparent),
         #090b16;
       border: 1px solid #2f3258;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .phone-status {
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-2);
+      letter-spacing: 2px;
     }
 
     .rec-dot {
@@ -222,153 +245,154 @@
       height: 14px;
       border-radius: 50%;
       background: var(--accent-2);
-      box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.72);
+      box-shadow: 0 0 0 0 rgba(255,51,51,0.72);
       animation: pulse 1.8s infinite;
-      margin: 16px auto 10px;
+      margin: 14px 0 10px;
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
-      70% { box-shadow: 0 0 0 16px rgba(255, 51, 51, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(255,51,51,0.7); }
+      70% { box-shadow: 0 0 0 16px rgba(255,51,51,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,51,51,0); }
+    }
+
+    .phone-timer {
+      font-family: "Poppins", sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .phone-label {
+      text-align: center;
+      color: #c2c2d2;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .waveform {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      margin-top: 18px;
+      height: 50px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--accent-2), rgba(255,51,51,0.3));
+      animation: waveAnim 1.2s ease-in-out infinite alternate;
+      height: var(--h, 40%);
+    }
+
+    @keyframes waveAnim {
+      0% { transform: scaleY(0.3); opacity: 0.6; }
+      100% { transform: scaleY(1); opacity: 1; }
     }
 
     .hero-kpis {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
+      margin-top: 14px;
     }
 
     .hero-kpis .mini {
-      background: rgba(0, 0, 0, 0.26);
+      background: rgba(0,0,0,0.26);
       border: 1px solid #2f3152;
       border-radius: 12px;
       text-align: center;
-      padding: 10px;
+      padding: 10px 6px;
     }
 
     .hero-kpis strong {
       display: block;
-      font-size: 19px;
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
       color: var(--text-strong);
       line-height: 1.1;
     }
 
     .hero-kpis span {
-      font-size: 12px;
+      font-size: 11px;
       color: #b3b3c8;
     }
 
-    .case-grid {
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 28px;
+    /* ===== 2. TRUST BAR ===== */
+    .trust-bar {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.015);
     }
 
-    .case-card h3 {
-      margin: 8px 0 12px;
-      color: var(--text-strong);
-      font-size: 22px;
-      line-height: 1.25;
-    }
-
-    .story-item {
-      margin: 8px 0;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid #35365a;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .story-item b {
-      color: var(--text-strong);
-      display: inline-block;
-      margin-right: 6px;
-    }
-
-    .counter-grid {
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 22px;
-    }
-
-    .video-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-      margin-top: 22px;
-    }
-
-    .video-frame {
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .video-frame iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      display: block;
-    }
-
-    .video-links {
+    .trust-grid {
       display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
       gap: 10px;
     }
 
-    .video-link {
+    .trust-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .trust-icon.privacy { background: rgba(39,194,129,0.12); border: 1px solid rgba(39,194,129,0.3); }
+    .trust-icon.speed { background: rgba(255,183,0,0.12); border: 1px solid rgba(255,183,0,0.3); }
+    .trust-icon.legal { background: rgba(78,140,255,0.12); border: 1px solid rgba(78,140,255,0.3); }
+    .trust-icon.simple { background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.3); }
+
+    .trust-item strong {
       display: block;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid #303357;
-      border-radius: 12px;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .video-link strong {
+      font-size: 14px;
       color: var(--text-strong);
-      display: block;
-      margin-bottom: 4px;
+      line-height: 1.2;
     }
 
-    .counter-card {
-      text-align: center;
-      padding: 30px 14px;
-    }
-
-    .counter-value {
-      font-size: clamp(34px, 6vw, 64px);
-      color: var(--text-strong);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin: 0;
-    }
-
-    .counter-label {
-      margin-top: 8px;
+    .trust-item span {
+      font-size: 12px;
       color: var(--text-muted);
-      font-size: 15px;
     }
 
+    /* ===== 3. DEMO ===== */
     .demo-steps {
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 22px;
+      margin-top: 20px;
       counter-reset: step;
     }
 
     .demo-card {
       position: relative;
-      padding-top: 46px;
+      padding-top: 44px;
     }
 
     .demo-card::before {
       counter-increment: step;
       content: counter(step);
       position: absolute;
-      top: 14px;
-      left: 16px;
+      top: 16px;
+      left: 18px;
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: rgba(255, 51, 51, 0.2);
-      border: 1px solid rgba(255, 51, 51, 0.5);
+      background: rgba(255,51,51,0.2);
+      border: 1px solid rgba(255,51,51,0.5);
       color: #ffdbdb;
       text-align: center;
       font-size: 13px;
@@ -377,45 +401,124 @@
     }
 
     .demo-time {
-      margin-top: 12px;
+      margin-top: 10px;
       display: inline-flex;
       padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(39, 194, 129, 0.16);
-      border: 1px solid rgba(39, 194, 129, 0.4);
+      background: rgba(39,194,129,0.16);
+      border: 1px solid rgba(39,194,129,0.4);
       color: #9cf0c8;
       font-size: 13px;
       font-weight: 700;
     }
 
-    .bento {
-      margin-top: 22px;
-      grid-template-columns: repeat(12, 1fr);
+    /* ===== 4. STATS BRIDGE + CASES ===== */
+    .stats-bridge {
+      text-align: center;
+      padding: 28px 20px;
+      margin-bottom: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,51,51,0.06), rgba(255,51,51,0.02));
+      border: 1px solid var(--danger-border);
     }
 
-    .span-8 { grid-column: span 8; }
-    .span-6 { grid-column: span 6; }
-    .span-4 { grid-column: span 4; }
+    .stats-bridge p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
 
-    .law-wrap {
-      margin-top: 24px;
-      display: grid;
+    .stats-bridge strong {
+      color: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .case-grid {
       grid-template-columns: 1fr;
-      gap: 12px;
+      margin-top: 20px;
+      gap: 18px;
     }
 
-    .law-card {
-      border-left: 4px solid var(--accent-2);
-    }
-
-    .law-card h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
+    .case-card h3 {
+      margin: 0 0 14px;
       color: var(--text-strong);
+      font-size: 20px;
+      line-height: 1.3;
     }
 
+    .story-item {
+      margin: 6px 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .story-item b {
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 13px;
+    }
+
+    .story-danger {
+      background: var(--danger-soft);
+      border: 1px solid var(--danger-border);
+    }
+
+    .story-danger b { color: var(--danger); }
+
+    .story-neutral {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid #35365a;
+    }
+
+    .story-neutral b { color: var(--text-strong); }
+
+    .story-success {
+      background: var(--success-soft);
+      border: 1px solid var(--success-border);
+    }
+
+    .story-success b { color: var(--success); }
+
+    .counterfactual {
+      margin-top: 10px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-style: italic;
+      color: #ffa0a0;
+      border-left: 3px solid rgba(255,51,51,0.4);
+      background: rgba(255,51,51,0.04);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ===== 5. NUMBERS ===== */
+    .counter-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 20px;
+    }
+
+    .counter-card {
+      text-align: center;
+      padding: 28px 14px;
+    }
+
+    .counter-value {
+      font-size: clamp(34px, 6vw, 60px);
+      color: var(--text-strong);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .counter-label {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ===== 6. COMPARE ===== */
     .compare-wrap {
-      margin-top: 24px;
+      margin-top: 20px;
       overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -424,13 +527,12 @@
 
     table {
       width: 100%;
-      min-width: 640px;
+      min-width: 560px;
       border-collapse: collapse;
     }
 
-    th,
-    td {
-      padding: 14px 12px;
+    th, td {
+      padding: 14px 14px;
       border-bottom: 1px solid #2b2d48;
       text-align: left;
       vertical-align: top;
@@ -443,57 +545,142 @@
       font-weight: 700;
     }
 
-    td strong.ok {
-      color: #9ff0c9;
+    td strong.ok { color: #9ff0c9; }
+    td strong.bad { color: #ffc2c2; }
+
+    /* ===== 7. LEGAL + PRIVACY ===== */
+    .privacy-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      border-radius: 14px;
+      background: rgba(39,194,129,0.08);
+      border: 1px solid rgba(39,194,129,0.25);
+      text-align: center;
     }
 
-    td strong.bad {
-      color: #ffc2c2;
+    .privacy-banner-icon {
+      font-size: 24px;
+      flex-shrink: 0;
     }
 
-    .scenario-grid {
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 22px;
+    .privacy-banner p {
+      font-size: 15px;
+      color: #a8e6c8;
+      font-weight: 600;
     }
 
+    .law-wrap {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .law-card {
+      border-left: 4px solid var(--accent-2);
+    }
+
+    .law-card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: var(--text-strong);
+    }
+
+    /* ===== 8. PRICING ===== */
     .price-grid {
       grid-template-columns: repeat(2, 1fr);
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
-    .price-card {
-      position: relative;
-    }
+    .price-card { position: relative; }
 
     .plan-tag {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 16px;
+      right: 16px;
       font-size: 12px;
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(255, 51, 51, 0.16);
-      border: 1px solid rgba(255, 51, 51, 0.4);
+      background: rgba(255,51,51,0.16);
+      border: 1px solid rgba(255,51,51,0.4);
       color: #ffd7d7;
       font-weight: 700;
     }
 
     .price {
-      margin: 8px 0 8px;
+      margin: 8px 0;
       font-size: clamp(28px, 5vw, 44px);
       color: var(--text-strong);
       line-height: 1.1;
     }
 
+    .price-original {
+      text-decoration: line-through;
+      color: #666;
+      font-size: 18px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .price-save {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255,51,51,0.15);
+      color: #ff9999;
+      font-size: 13px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .price-card ul {
+      margin-top: 12px;
+    }
+
+    .price-card li {
+      padding: 5px 0;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .price-card li::before {
+      content: "✓ ";
+      color: var(--success);
+      font-weight: 700;
+    }
+
     .cta-panel {
-      margin-top: 20px;
+      margin-top: 18px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
+    /* ===== 9. FINAL CTA ===== */
+    .final-cta-card {
+      text-align: center;
+      padding: 40px 24px;
+      border: 1px solid rgba(255,51,51,0.3);
+      background: linear-gradient(180deg, rgba(255,51,51,0.06), var(--card-soft));
+    }
+
+    .final-cta-card .section-title {
+      margin-top: 0;
+    }
+
+    .final-urgency {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #ffa8a8;
+      font-style: italic;
+    }
+
+    /* ===== 10. FAQ ===== */
     .faq-list {
-      margin-top: 18px;
+      margin-top: 16px;
       display: grid;
       gap: 10px;
     }
@@ -502,7 +689,7 @@
       background: #141526;
       border: 1px solid #303357;
       border-radius: 12px;
-      padding: 12px 14px;
+      padding: 14px 16px;
     }
 
     summary {
@@ -510,11 +697,10 @@
       font-weight: 700;
       color: var(--text-strong);
       list-style: none;
+      font-size: 15px;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
-    }
+    summary::-webkit-details-marker { display: none; }
 
     details p {
       margin: 8px 0 0;
@@ -522,13 +708,58 @@
       font-size: 15px;
     }
 
+    /* ===== FOOTER ===== */
     footer {
-      padding: 36px 0 110px;
+      padding: 32px 0 110px;
       border-top: 1px solid #232338;
-      color: #a6a6ba;
-      font-size: 14px;
     }
 
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: #7a7a92;
+      max-width: 340px;
+      line-height: 1.5;
+    }
+
+    .footer-brand strong {
+      font-size: 15px;
+      color: #a6a6ba;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #7a7a92;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .15s;
+    }
+
+    .footer-links a:hover { color: #b3b3c8; }
+
+    .footer-copy {
+      width: 100%;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #1e1e32;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    /* ===== STICKY CTA ===== */
     .sticky-cta {
       position: fixed;
       left: 10px;
@@ -536,15 +767,15 @@
       bottom: 10px;
       z-index: 99;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       justify-content: space-between;
-      padding: 10px;
+      padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid #383852;
-      background: rgba(10, 10, 18, 0.92);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.46);
+      background: rgba(10,10,18,0.94);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.5);
     }
 
     .sticky-cta p {
@@ -555,72 +786,96 @@
     }
 
     .sticky-cta .btn {
-      min-height: 46px;
-      padding: 12px 14px;
+      min-height: 44px;
+      padding: 10px 16px;
       white-space: nowrap;
-      font-size: 15px;
+      font-size: 14px;
     }
 
+    /* ===== PLAY STORE BADGE ===== */
+    .play-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #8a8aa0;
+      margin-top: 6px;
+    }
+
+    .play-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: #8a8aa0;
+    }
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 980px) {
-      .hero-wrap,
-      .case-grid,
-      .video-grid,
-      .counter-grid,
-      .demo-steps,
-      .scenario-grid,
-      .price-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-wrap { grid-template-columns: 1fr; text-align: center; }
+      .hero-cta { justify-content: center; }
+      .friction-text { text-align: center; }
+      .phone { width: min(240px, 64vw); }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .demo-steps { grid-template-columns: 1fr; }
+      .counter-grid { grid-template-columns: repeat(3, 1fr); }
+      .price-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-brand p { max-width: none; }
+    }
 
-      .bento {
-        grid-template-columns: 1fr;
-      }
-
-      .span-8,
-      .span-6,
-      .span-4 {
-        grid-column: auto;
-      }
-
-      .section {
-        padding: 64px 0;
-      }
-
-      .hero {
-        padding-top: 22px;
-      }
+    @media (max-width: 600px) {
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .counter-grid { grid-template-columns: 1fr; }
+      .section { padding: 48px 0; }
+      .hero { padding-top: 16px; }
     }
 
     @media (min-width: 981px) {
       .sticky-cta {
         left: auto;
         right: 22px;
-        width: 380px;
+        width: 400px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- ===== 1. HERO: 편도체 3초 활성화 + 손실회피 CTA ===== -->
   <header class="hero" id="top">
     <div class="container hero-wrap">
       <div class="fade-up">
+        <p class="micro-scenario">"상사가 소리치기 시작했다. 손이 떨린다.<br/>녹음앱을 찾는다. 5초... 10초... 이미 늦었다."</p>
         <span class="label">위급상황 증거 특화 앱</span>
-        <h1>녹음 버튼 찾는 5~10초,<br />그 시간이 인생을 바꿉니다</h1>
-        <p>긴급녹음은 <strong class="latin">0.5초</strong> 즉시 시작으로 위기 순간을 증거로 남기도록 설계했습니다. 핵심 기능은 무료로 바로 시작하고, 필요할 때만 Pro로 한계를 해제하세요.</p>
+        <h1>녹음 버튼 찾는 5~10초,<br/>그 시간이 인생을 바꿉니다</h1>
+        <p class="hero-sub">긴급녹음은 <strong class="latin" style="color:#fff;">0.5초</strong> 즉시 시작으로 위기 순간을 증거로 남깁니다.<br/>핵심 기능은 무료. 필요할 때만 Pro로 한계를 해제하세요.</p>
         <div class="hero-cta">
-          <a href="#price" class="btn btn-primary">지금 무료 다운로드</a>
+          <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">무료로 미리 준비하기</a>
           <a href="#cases" class="btn btn-secondary">실제 사건 보기</a>
         </div>
+        <p class="friction-text">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
       </div>
 
-      <aside class="card mockup fade-up" aria-label="앱 목업">
-        <div class="label">폰 목업 영역 (placeholder)</div>
+      <aside class="fade-up" style="display:flex; flex-direction:column; gap:14px;">
         <div class="phone" role="img" aria-label="녹음 진행 화면 예시">
           <div class="phone-screen">
-            <div class="latin" style="font-size:13px; color:#b7b7c8;">REC</div>
+            <div class="phone-status">REC</div>
             <div class="rec-dot"></div>
-            <div class="latin" style="font-size:38px; text-align:center; color:#fff; letter-spacing:-0.02em;">00:07</div>
-            <p style="text-align:center; color:#c2c2d2; margin-top:8px;">즉시 녹음 중 · 스텔스 모드 대기</p>
+            <div class="phone-timer latin">00:07</div>
+            <p class="phone-label">즉시 녹음 중 · 스텔스 모드 대기</p>
+            <div class="waveform">
+              <div class="wave-bar" style="--h:35%; animation-delay:0s;"></div>
+              <div class="wave-bar" style="--h:65%; animation-delay:0.1s;"></div>
+              <div class="wave-bar" style="--h:50%; animation-delay:0.2s;"></div>
+              <div class="wave-bar" style="--h:80%; animation-delay:0.3s;"></div>
+              <div class="wave-bar" style="--h:40%; animation-delay:0.15s;"></div>
+              <div class="wave-bar" style="--h:70%; animation-delay:0.25s;"></div>
+              <div class="wave-bar" style="--h:55%; animation-delay:0.35s;"></div>
+              <div class="wave-bar" style="--h:85%; animation-delay:0.05s;"></div>
+              <div class="wave-bar" style="--h:45%; animation-delay:0.2s;"></div>
+              <div class="wave-bar" style="--h:60%; animation-delay:0.3s;"></div>
+              <div class="wave-bar" style="--h:75%; animation-delay:0.1s;"></div>
+              <div class="wave-bar" style="--h:42%; animation-delay:0.25s;"></div>
+            </div>
           </div>
         </div>
         <div class="hero-kpis">
@@ -632,93 +887,111 @@
     </div>
   </header>
 
+  <!-- ===== 2. TRUST BAR: 신뢰 신호 4개 ===== -->
+  <section class="trust-bar fade-up">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon privacy">&#x1F512;</div>
+        <div>
+          <strong>기기에만 저장</strong>
+          <span>서버 전송 없음</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon speed">&#x26A1;</div>
+        <div>
+          <strong>0.5초 즉시 시작</strong>
+          <span>준비 단계 없음</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon legal">&#x2696;</div>
+        <div>
+          <strong>당사자 녹음 합법</strong>
+          <span>통비법 제3조</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon simple">&#x1F6E1;</div>
+        <div>
+          <strong>회원가입 없음</strong>
+          <span>개인정보 최소 수집</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main>
+
+    <!-- ===== 3. DEMO: 3단계 즉시 해결 시연 ===== -->
+    <section class="section" id="demo">
+      <div class="container">
+        <span class="label fade-up">3단계 데모</span>
+        <h2 class="section-title fade-up">앱 탭 → 즉시 녹음 → 화면 사라짐</h2>
+        <p class="section-sub fade-up">일반 녹음앱이 준비에 <strong class="latin">5~10초</strong>를 쓰는 동안, 긴급녹음은 시작 자체를 끝냅니다.</p>
+        <div class="grid demo-steps">
+          <article class="card demo-card fade-up">
+            <h3>앱 탭</h3>
+            <p>잠금 해제 후 앱을 누르는 순간부터 긴급 흐름이 시작됩니다.</p>
+            <span class="demo-time latin">즉시 진입</span>
+          </article>
+          <article class="card demo-card fade-up">
+            <h3>즉시 녹음 시작</h3>
+            <p>로딩 없이 바로 녹음. 증거를 먼저 확보합니다.</p>
+            <span class="demo-time latin">약 0.5초</span>
+          </article>
+          <article class="card demo-card fade-up">
+            <h3>화면 사라짐 (스텔스)</h3>
+            <p>노출을 줄이고 기록은 유지합니다. 흔적을 최소화하세요.</p>
+            <span class="demo-time latin">저노출 유지</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. STATS BRIDGE + CASE STUDIES (3개로 축소, 감정 컬러 대비) ===== -->
     <section class="section" id="cases">
       <div class="container">
-        <span class="label fade-up">실제 사건 핵심 사례</span>
-        <h2 class="section-title fade-up">녹음은 기능이 아니라, 결과를 바꾼 증거였습니다</h2>
-        <p class="section-sub fade-up">각 카드마다 [위기] → [녹음] → [결과] 흐름으로 정리했습니다.</p>
+        <div class="stats-bridge fade-up">
+          <p>직장인 <strong>10명 중 7명</strong>이 부당한 상황을 경험하지만,<br/>증거를 확보한 사람은 <strong>10명 중 1명</strong>도 되지 않습니다.</p>
+        </div>
+
+        <span class="label fade-up">실제 사건 사례</span>
+        <h2 class="section-title fade-up">녹음이 결과를 바꾼 실제 사건들</h2>
 
         <div class="grid case-grid">
           <article class="card case-card fade-up">
-            <h3>동탄 헬스장 성추행 무고 사건 (2024.06)</h3>
-            <div class="story-item"><b>[위기]</b>무고 의심 상황에서 피의자로 몰리며 진술 왜곡 위험이 있었습니다.</div>
-            <div class="story-item"><b>[녹음]</b>당사자가 <strong class="latin">3초</strong> 내 녹음을 시작해 현장 대응과 대화 맥락을 확보했습니다.</div>
-            <div class="story-item"><b>[결과]</b>핵심 정황이 드러나며 억울한 상황을 벗어나는 데 결정적 근거가 됐습니다.</div>
+            <h3>동탄 헬스장 성추행 무고 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024.06)</span></h3>
+            <div class="story-item story-danger"><b>[위기]</b> 무고 의심 상황에서 피의자로 몰리며 진술 왜곡 위험이 있었습니다.</div>
+            <div class="story-item story-neutral"><b>[녹음]</b> 당사자가 <strong class="latin">3초</strong> 내 녹음을 시작해 현장 대응과 대화 맥락을 확보했습니다.</div>
+            <div class="story-item story-success"><b>[결과]</b> 핵심 정황이 드러나며 억울한 상황을 벗어나는 데 결정적 근거가 됐습니다.</div>
+            <p class="counterfactual">만약 녹음이 없었다면? → 일방적 진술로 유죄 판결 가능성.</p>
           </article>
 
           <article class="card case-card fade-up">
-            <h3>쯔양 전 남친 폭행/갈취 사건 (2024.07)</h3>
-            <div class="story-item"><b>[위기]</b>오랜 기간 반복된 폭행·갈취를 입증하기 어려운 구조였습니다.</div>
-            <div class="story-item"><b>[녹음]</b><strong class="latin">3,800개</strong> 녹음 파일이 4년 학대의 패턴과 발언을 누적 증명했습니다.</div>
-            <div class="story-item"><b>[결과]</b>사건의 실체가 사회적으로 드러났고 수사·법적 대응의 중심 증거가 됐습니다.</div>
+            <h3>쯔양 전 남친 폭행/갈취 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024.07)</span></h3>
+            <div class="story-item story-danger"><b>[위기]</b> 오랜 기간 반복된 폭행·갈취를 입증하기 어려운 구조였습니다.</div>
+            <div class="story-item story-neutral"><b>[녹음]</b> <strong class="latin">3,800개</strong> 녹음 파일이 4년 학대의 패턴과 발언을 누적 증명했습니다.</div>
+            <div class="story-item story-success"><b>[결과]</b> 사건의 실체가 사회적으로 드러났고 수사·법적 대응의 중심 증거가 됐습니다.</div>
+            <p class="counterfactual">만약 녹음이 없었다면? → 4년간의 학대가 영원히 묻혔을 것.</p>
           </article>
 
           <article class="card case-card fade-up">
-            <h3>직장 내 괴롭힘 녹음 역고소 사건 (2024)</h3>
-            <div class="story-item"><b>[위기]</b>피해자가 괴롭힘을 기록했지만 오히려 녹음 자체로 역고소를 당했습니다.</div>
-            <div class="story-item"><b>[녹음]</b>지속적 언행이 담긴 파일이 사적 대화가 아닌 업무 맥락 증거로 검토됐습니다.</div>
-            <div class="story-item"><b>[결과]</b>배심원 <strong class="latin">7명 전원 무죄</strong>. 방어적 녹음의 정당성이 확인됐습니다.</div>
-          </article>
-
-          <article class="card case-card fade-up">
-            <h3>최정원 1억 협박 사건</h3>
-            <div class="story-item"><b>[위기]</b>거액 갈취를 노린 협박성 주장으로 명예와 경력이 동시에 위협받았습니다.</div>
-            <div class="story-item"><b>[녹음]</b>대화 녹음에서 금전 요구 의도와 갈취 계획 정황이 명확히 확인됐습니다.</div>
-            <div class="story-item"><b>[결과]</b><strong class="latin">1억</strong> 협박 프레임이 무력화되며 대응 국면을 뒤집었습니다.</div>
-          </article>
-
-          <article class="card case-card fade-up">
-            <h3>성범죄 혐의로 번질 뻔한 사건 (무죄 대응 사례)</h3>
-            <div class="story-item"><b>[위기]</b>일방 주장으로 성범죄 혐의가 형성될 수 있는 급박한 상황이었습니다.</div>
-            <div class="story-item"><b>[녹음]</b>현장 직후 확보된 대화 녹음이 진술의 모순과 실제 맥락을 보여줬습니다.</div>
-            <div class="story-item"><b>[결과]</b>수사·재판 단계에서 방어 근거가 인정되며 무죄/무혐의 대응에 결정적으로 작용했습니다.</div>
+            <h3>직장 내 괴롭힘 녹음 역고소 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024)</span></h3>
+            <div class="story-item story-danger"><b>[위기]</b> 피해자가 괴롭힘을 기록했지만 오히려 녹음 자체로 역고소를 당했습니다.</div>
+            <div class="story-item story-neutral"><b>[녹음]</b> 지속적 언행이 담긴 파일이 업무 맥락 증거로 인정됐습니다.</div>
+            <div class="story-item story-success"><b>[결과]</b> 배심원 <strong class="latin">7명 전원 무죄</strong>. 방어적 녹음의 정당성이 확인됐습니다.</div>
+            <p class="counterfactual">만약 녹음이 없었다면? → 오히려 가해자가 되었을 것.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="video-alert">
-      <div class="container">
-        <span class="label fade-up">유튜브 사건 브리핑</span>
-        <h2 class="section-title fade-up">영상으로 보면, 왜 "미리 설치"가 필요한지 더 분명해집니다</h2>
-        <p class="section-sub fade-up">과장 공포가 아니라 실제 사건 맥락을 확인하고, 바로 행동으로 연결하세요.</p>
-        <div class="grid video-grid">
-          <article class="card video-frame fade-up">
-            <iframe
-              loading="lazy"
-              src="https://www.youtube-nocookie.com/embed/TodoZktf5rY"
-              title="긴급녹음 사건 브리핑 영상"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </article>
-          <aside class="card fade-up">
-            <h3 style="margin-top:0;">사건 영상 더 보기</h3>
-            <div class="video-links">
-              <a class="video-link" href="https://www.youtube.com/results?search_query=%EB%8F%99%ED%83%84+%ED%97%AC%EC%8A%A4%EC%9E%A5+%EB%AC%B4%EA%B3%A0+%EC%82%AC%EA%B1%B4" target="_blank" rel="noopener noreferrer">
-                <strong>동탄 사건 관련 영상 모아보기</strong>
-                3초 녹음이 어떻게 상황을 바꿨는지 확인하세요.
-              </a>
-              <a class="video-link" href="https://www.youtube.com/results?search_query=%EC%AF%94%EC%96%91+3%2C800+%EB%85%B9%EC%9D%8C+%EC%82%AC%EA%B1%B4" target="_blank" rel="noopener noreferrer">
-                <strong>쯔양 3,800개 녹음 사건 영상</strong>
-                누적 기록이 사건 실체를 어떻게 증명했는지 보세요.
-              </a>
-              <a class="video-link" href="https://www.youtube.com/results?search_query=%EC%A7%81%EC%9E%A5%EB%82%B4+%EA%B4%B4%EB%A1%AD%ED%9E%98+%EB%85%B9%EC%9D%8C+%EB%AC%B4%EC%A3%84+%ED%8C%90%EA%B2%B0" target="_blank" rel="noopener noreferrer">
-                <strong>직장 녹음 무죄 판결 브리핑</strong>
-                배심원 전원 무죄의 쟁점을 빠르게 파악하세요.
-              </a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
+    <!-- ===== 5. KEY NUMBERS ===== -->
     <section class="section" id="numbers">
       <div class="container">
         <span class="label fade-up">핵심 숫자</span>
-        <h2 class="section-title fade-up">사람을 움직이는 건 추측이 아니라 숫자입니다</h2>
+        <h2 class="section-title fade-up">추측이 아니라 숫자가 사람을 움직입니다</h2>
         <div class="grid counter-grid">
           <article class="card counter-card fade-up">
             <p class="counter-value" data-counter="64.1" data-suffix="%">0%</p>
@@ -726,7 +999,7 @@
           </article>
           <article class="card counter-card fade-up">
             <p class="counter-value" data-counter="3" data-suffix="초">0초</p>
-            <p class="counter-label">동탄 사건 핵심, 즉시 녹음 시작 시간</p>
+            <p class="counter-label">동탄 사건, 즉시 녹음 시작 시간</p>
           </article>
           <article class="card counter-card fade-up">
             <p class="counter-value" data-counter="3800" data-suffix="+">0+</p>
@@ -736,91 +1009,7 @@
       </div>
     </section>
 
-    <section class="section" id="demo">
-      <div class="container">
-        <span class="label fade-up">3단계 데모</span>
-        <h2 class="section-title fade-up">앱 탭 → 즉시 녹음 → 화면 사라짐</h2>
-        <p class="section-sub fade-up">일반 녹음앱이 준비 단계에 <strong class="latin">5~10초</strong>를 쓰는 동안, 긴급녹음은 시작 자체를 끝냅니다.</p>
-        <div class="grid demo-steps">
-          <article class="card demo-card fade-up">
-            <h3>앱 탭</h3>
-            <p>잠금 해제 후 앱을 누르는 순간부터 긴급 흐름이 시작됩니다.</p>
-            <span class="demo-time latin">즉시 진입</span>
-          </article>
-          <article class="card demo-card fade-up">
-            <h3>즉시 녹음 시작</h3>
-            <p>로딩 화면 없이 녹음 화면으로 이동해 증거를 먼저 확보합니다.</p>
-            <span class="demo-time latin">약 0.5초</span>
-          </article>
-          <article class="card demo-card fade-up">
-            <h3>화면 사라짐 (스텔스)</h3>
-            <p>노출을 줄이고 기록은 유지합니다. 위기 상황에서 흔적을 최소화하세요.</p>
-            <span class="demo-time latin">저노출 유지</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="container">
-        <span class="label fade-up">주요 기능</span>
-        <h2 class="section-title fade-up">긴급 대응에 필요한 기능만 깊게 설계했습니다</h2>
-        <div class="grid bento">
-          <article class="card span-8 fade-up">
-            <h3>원터치 녹음 엔진</h3>
-            <p>앱 실행 즉시 녹음 로직을 우선 수행해 준비 시간을 줄였습니다. 위기에서는 첫 버튼이 전부입니다.</p>
-          </article>
-          <article class="card span-4 fade-up">
-            <h3>스텔스 모드</h3>
-            <p>화면 노출을 낮춰 상황 악화를 막고 녹음을 이어갑니다.</p>
-          </article>
-          <article class="card span-4 fade-up">
-            <h3>3초 자동 저장</h3>
-            <p>예기치 않은 종료에서도 누적된 내용을 최대한 보존합니다.</p>
-          </article>
-          <article class="card span-4 fade-up">
-            <h3>위젯/퀵 액션</h3>
-            <p>급박한 순간에 앱 탐색 없이 빠르게 시작할 수 있습니다.</p>
-          </article>
-          <article class="card span-4 fade-up">
-            <h3>증거 특화 파일 관리</h3>
-            <p>시간 정보 중심으로 기록을 추적해 대응 준비를 단순화합니다.</p>
-          </article>
-          <article class="card span-6 fade-up">
-            <h3>패닉 상황 UX</h3>
-            <p>큰 버튼, 단순 흐름, 최소 단계로 손이 떨리는 상황에서도 오동작을 줄입니다.</p>
-          </article>
-          <article class="card span-6 fade-up">
-            <h3>광고 최소 방해 구조</h3>
-            <p>Pro에서는 광고 제거로 핵심 흐름을 완전히 비워서 더 빠른 대응을 지원합니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="legal">
-      <div class="container">
-        <span class="label fade-up">법적 근거</span>
-        <h2 class="section-title fade-up">녹음은 합법입니다</h2>
-        <p class="section-sub fade-up">대화 당사자의 방어적 녹음은 국내 법 해석과 판례 흐름에서 중요한 보호 수단으로 다뤄집니다.</p>
-
-        <div class="law-wrap">
-          <article class="card law-card fade-up">
-            <h3>통신비밀보호법 제3조</h3>
-            <p>대화 당사자가 자신의 대화를 녹음하는 행위는 원칙적으로 제3자 도청과 구분되며, 실무상 합법 범주로 해석됩니다.</p>
-          </article>
-          <article class="card law-card fade-up">
-            <h3>2024 배심원 판결</h3>
-            <p>직장 내 괴롭힘 녹음 관련 사건에서 배심원 7명 전원 무죄 판단이 나와, 방어 목적 기록의 정당성이 확인됐습니다.</p>
-          </article>
-          <article class="card law-card fade-up">
-            <h3>2022 여론조사 64.1%</h3>
-            <p>녹음금지법에 대한 반대 의견이 64.1%를 기록하며, 국민 인식 또한 자기보호 녹음에 무게를 두고 있습니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
+    <!-- ===== 6. COMPARE TABLE ===== -->
     <section class="section" id="compare">
       <div class="container">
         <span class="label fade-up">비교 테이블</span>
@@ -838,22 +1027,22 @@
               <tr>
                 <td>시작 속도</td>
                 <td><strong class="ok">약 0.5초 즉시 시작</strong></td>
-                <td><strong class="bad">5~10초 준비 단계 발생</strong></td>
+                <td><strong class="bad">5~10초 준비 단계</strong></td>
               </tr>
               <tr>
                 <td>스텔스 대응</td>
-                <td><strong class="ok">화면 노출 최소화 모드 제공</strong></td>
-                <td><strong class="bad">일반 UI 노출 유지</strong></td>
+                <td><strong class="ok">화면 노출 최소화</strong></td>
+                <td><strong class="bad">일반 UI 노출</strong></td>
               </tr>
               <tr>
-                <td>증거 특화 설계</td>
-                <td><strong class="ok">패닉 상황 기준 동선 최적화</strong></td>
-                <td><strong class="bad">일반 메모/회의 용도 중심</strong></td>
-              </tr>
-              <tr>
-                <td>패닉 상황 대응</td>
-                <td><strong class="ok">큰 버튼, 최소 단계, 빠른 진입</strong></td>
+                <td>패닉 UX</td>
+                <td><strong class="ok">큰 버튼, 최소 단계</strong></td>
                 <td><strong class="bad">다단계 탐색 필요</strong></td>
+              </tr>
+              <tr>
+                <td>파일 보안</td>
+                <td><strong class="ok">기기 전용, 서버 전송 없음</strong></td>
+                <td><strong class="bad">클라우드 동기화 기본</strong></td>
               </tr>
             </tbody>
           </table>
@@ -861,144 +1050,156 @@
       </div>
     </section>
 
-    <section class="section" id="scenario">
+    <!-- ===== 7. LEGAL + PRIVACY ===== -->
+    <section class="section" id="legal">
       <div class="container">
-        <span class="label fade-up">사용 시나리오</span>
-        <h2 class="section-title fade-up">이런 순간에 가장 먼저 켜두세요</h2>
-        <div class="grid scenario-grid">
-          <article class="card fade-up">
-            <h3>직장</h3>
-            <p>면담, 질책, 인사 갈등 상황에서 발언 맥락을 기록해 대응 준비를 하세요.</p>
+        <div class="privacy-banner fade-up">
+          <div class="privacy-banner-icon">&#x1F512;</div>
+          <p>녹음 파일은 사용자 기기에만 저장됩니다 · 서버 전송 없음 · 개발사도 접근 불가</p>
+        </div>
+
+        <span class="label fade-up">법적 근거</span>
+        <h2 class="section-title fade-up">당사자 녹음은 합법입니다</h2>
+        <p class="section-sub fade-up">대화 당사자의 방어적 녹음은 법과 판례에서 보호 수단으로 인정됩니다.</p>
+
+        <div class="law-wrap">
+          <article class="card law-card fade-up">
+            <h3>통신비밀보호법 제3조</h3>
+            <p>대화 당사자 본인이 녹음하는 행위는 제3자 도청과 구분되며, 실무상 합법입니다.</p>
           </article>
-          <article class="card fade-up">
-            <h3>가정/관계</h3>
-            <p>반복적인 폭언·협박이 발생할 때 시간순 증거를 누적해 사실관계를 지키세요.</p>
+          <article class="card law-card fade-up">
+            <h3>2024 배심원 판결</h3>
+            <p>직장 내 괴롭힘 녹음 사건에서 배심원 7명 전원 무죄. 방어 목적 기록의 정당성이 확인됐습니다.</p>
           </article>
-          <article class="card fade-up">
-            <h3>보이스피싱/갈취</h3>
-            <p>통화 도중 협박·유도 발언을 즉시 보존해 경찰 신고와 법률 대응에 활용하세요.</p>
+          <article class="card law-card fade-up">
+            <h3>2022 여론조사 64.1%</h3>
+            <p>녹음금지법 반대 64.1%. 국민 인식도 자기보호 녹음에 무게를 두고 있습니다.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ===== 8. PRICING: 앵커링 효과 적용 ===== -->
     <section class="section" id="price">
       <div class="container">
         <span class="label fade-up">가격</span>
-        <h2 class="section-title fade-up">핵심 기능은 무료로, Pro는 한계 해제용입니다</h2>
+        <h2 class="section-title fade-up">핵심 기능은 무료, Pro는 한계 해제</h2>
         <div class="grid price-grid">
           <article class="card price-card fade-up">
             <h3>무료 (핵심 기능 100%)</h3>
             <p class="price latin">₩0</p>
             <ul>
-              <li>원터치 녹음</li>
+              <li>원터치 즉시 녹음</li>
               <li>스텔스 모드</li>
-              <li>저장 3개 (증거 파일 우선 저장)</li>
-              <li>10분 제한 (핵심 기능은 동일)</li>
+              <li>저장 3개 · 10분 제한</li>
+              <li>첫 녹음 무제한 쿠폰 1회</li>
             </ul>
             <div class="cta-panel">
-              <a class="btn btn-secondary" href="#top">지금 무료 다운로드</a>
+              <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 시작하기</a>
             </div>
           </article>
 
-          <article class="card price-card fade-up" style="border-color: rgba(255, 51, 51, 0.7);">
+          <article class="card price-card fade-up" style="border-color: rgba(255,51,51,0.6);">
             <span class="plan-tag">추천</span>
-            <h3>Pro (편의/한계 해제)</h3>
-            <p class="price latin">₩5,900 <span style="font-size:14px; font-weight:700;">일회성</span></p>
+            <h3>Pro (편의 + 한계 해제)</h3>
+            <p class="price latin">
+              <span class="price-original latin">₩12,000</span>₩5,900
+              <span style="font-size:14px; font-weight:700;"> 일회성</span>
+              <span class="price-save">50% 할인</span>
+            </p>
             <ul>
               <li>저장 무제한 + 녹음 시간 무제한</li>
-              <li>광고 제거</li>
-              <li>예약/백업 등 편의 기능 확장</li>
+              <li>광고 완전 제거</li>
+              <li>스텔스 정지 (화면 없이 종료)</li>
+              <li>예약 녹음 · 고음질 · AI 분석</li>
             </ul>
             <div class="cta-panel">
-              <a class="btn btn-primary" href="#top">지금 무료 다운로드</a>
+              <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 미리 준비하기</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ===== 9. FINAL CTA: 손실 프레이밍 ===== -->
     <section class="section" id="final-cta">
       <div class="container">
-        <div class="card fade-up" style="text-align:center; padding:30px 20px;">
-          <h2 class="section-title" style="margin-top:0;">증거는 나중에 만들 수 없습니다</h2>
-          <p class="section-sub" style="margin:0 auto;">위급한 순간이 오기 전에 준비하세요. 오늘 설치한 1번의 선택이 내일의 결과를 바꿉니다.</p>
-          <div class="cta-panel" style="justify-content:center; margin-top:22px;">
-            <a class="btn btn-primary" href="#top">지금 무료 다운로드</a>
-            <a class="btn btn-secondary" href="#cases">실제 사건 다시 보기</a>
+        <div class="card final-cta-card fade-up">
+          <h2 class="section-title">증거는 나중에 만들 수 없습니다</h2>
+          <p class="final-urgency">지금 이 순간에도 누군가는 증거 없이 억울한 상황에 처해 있습니다.</p>
+          <p class="section-sub" style="margin:12px auto 0; text-align:center;">오늘 설치한 1번의 선택이 내일의 결과를 바꿉니다.</p>
+          <div class="cta-panel" style="justify-content:center; margin-top:20px;">
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 미리 준비하기</a>
           </div>
+          <p class="friction-text" style="text-align:center; margin-top:10px;">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
         </div>
       </div>
     </section>
 
+    <!-- ===== 10. FAQ (4개로 축소) ===== -->
     <section class="section" id="faq">
       <div class="container">
         <span class="label fade-up">FAQ</span>
         <h2 class="section-title fade-up">자주 묻는 질문</h2>
         <div class="faq-list">
           <details class="fade-up" open>
-            <summary>Q1. 대화 당사자가 녹음하면 합법인가요?</summary>
-            <p>대화 당사자의 녹음은 제3자 도청과 다르게 해석되는 것이 일반적입니다. 다만 개별 사건은 법률 전문가 상담을 권장합니다.</p>
+            <summary>대화 당사자가 녹음하면 합법인가요?</summary>
+            <p>대화 당사자의 녹음은 제3자 도청과 다르게 해석되며, 실무상 합법입니다. 개별 사건은 법률 전문가 상담을 권장합니다.</p>
           </details>
           <details class="fade-up">
-            <summary>Q2. 왜 일반 녹음앱보다 빠른가요?</summary>
-            <p>긴급녹음은 메뉴 진입보다 녹음 시작 로직을 우선 처리해 0.5초 수준의 즉시 시작을 목표로 설계했습니다.</p>
+            <summary>왜 일반 녹음앱보다 빠른가요?</summary>
+            <p>긴급녹음은 메뉴 진입 대신 녹음 시작 로직을 최우선 처리해 0.5초 수준의 즉시 시작을 구현합니다.</p>
           </details>
           <details class="fade-up">
-            <summary>Q3. 스텔스 모드는 어떤 상황에서 유용한가요?</summary>
-            <p>화면 노출 자체가 리스크인 상황에서 사용자 존재감을 낮추며 기록을 유지하는 데 유용합니다.</p>
+            <summary>녹음 파일은 어디에 저장되나요?</summary>
+            <p>모든 녹음은 사용자 기기에만 저장됩니다. 서버 전송 없음. 개발사도 접근할 수 없습니다.</p>
           </details>
           <details class="fade-up">
-            <summary>Q4. 무료 플랜 제한은 무엇인가요?</summary>
-            <p>핵심 기능은 무료로 모두 사용 가능하며, 무료 플랜은 저장 개수와 길이에 제한이 있습니다. Pro는 이 한계를 해제하는 선택 옵션입니다.</p>
-          </details>
-          <details class="fade-up">
-            <summary>Q5. Pro 결제는 구독인가요?</summary>
-            <p>현재 명세 기준 Pro는 5,900원 일회성입니다. 정책 변경 시 스토어 공지가 우선 적용됩니다.</p>
-          </details>
-          <details class="fade-up">
-            <summary>Q6. 녹음 파일은 어디에 저장되나요?</summary>
-            <p>기기 저장을 기본으로 하며, 사용자가 직접 관리·공유·백업할 수 있게 구성됩니다.</p>
+            <summary>Pro는 구독인가요?</summary>
+            <p>Pro는 ₩5,900 일회성 결제입니다. 월간/연간 구독이 아닙니다.</p>
           </details>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <div class="container">
-      <p>긴급녹음 | 위급상황 즉시 녹음 앱</p>
-      <p style="margin-top:8px;"><a href="/privacy" style="color:#9ca3af; text-decoration:none;">개인정보처리방침</a> · <a href="mailto:emerec@mtrnlab.com" style="color:#9ca3af; text-decoration:none;">문의</a></p>
-      <p>안내: 본 페이지의 법률 정보는 일반 안내이며, 개별 사건의 법적 판단은 전문 상담이 필요합니다.</p>
-      <p>© 2026 MtrnLab. All rights reserved.</p>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>MtrnLab</strong>
+        <p>위급한 순간을 대비하는 기술을 만듭니다.<br/>안내: 본 페이지의 법률 정보는 일반 안내이며, 개별 사건은 전문 상담이 필요합니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="mailto:emerec@mtrnlab.com">문의</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 MtrnLab. All rights reserved.</div>
     </div>
   </footer>
 
+  <!-- ===== STICKY CTA: 손실 프레이밍 ===== -->
   <div class="sticky-cta" aria-label="하단 고정 다운로드 바">
-    <p><strong>위급할 때는 준비한 사람만 기록합니다.</strong><br />핵심 기능 무료 · 필요할 때만 Pro ₩5,900</p>
-    <a href="#top" class="btn btn-primary">지금 무료 다운로드</a>
+    <p><strong>지금 안 깔면, 그 순간엔 늦습니다.</strong><br/>핵심 무료 · Pro ₩5,900 일회성</p>
+    <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">무료 설치</a>
   </div>
 
+  <!-- ===== GSAP 애니메이션 ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script>
     window.addEventListener('DOMContentLoaded', function () {
-      if (!window.gsap || !window.ScrollTrigger) {
-        return;
-      }
-
+      if (!window.gsap || !window.ScrollTrigger) return;
       gsap.registerPlugin(ScrollTrigger);
 
-      gsap.utils.toArray('.fade-up').forEach(function (el) {
+      gsap.utils.toArray('.fade-up').forEach(function (el, i) {
         gsap.to(el, {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.65,
+          delay: i < 4 ? i * 0.08 : 0,
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 86%'
-          }
+          scrollTrigger: { trigger: el, start: 'top 88%' }
         });
       });
 
@@ -1006,24 +1207,18 @@
         var target = Number(el.getAttribute('data-counter'));
         var suffix = el.getAttribute('data-suffix') || '';
         var obj = { value: 0 };
-
         gsap.to(obj, {
           value: target,
           duration: 1.6,
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 86%',
-            once: true
-          },
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
           onUpdate: function () {
-            var current = obj.value;
             if (target === 64.1) {
-              el.textContent = current.toFixed(1) + suffix;
+              el.textContent = obj.value.toFixed(1) + suffix;
             } else if (target >= 1000) {
-              el.textContent = Math.floor(current).toLocaleString('ko-KR') + suffix;
+              el.textContent = Math.floor(obj.value).toLocaleString('ko-KR') + suffix;
             } else {
-              el.textContent = Math.floor(current) + suffix;
+              el.textContent = Math.floor(obj.value) + suffix;
             }
           }
         });
@@ -1031,32 +1226,22 @@
     });
   </script>
 
+  <!-- ===== STRUCTURED DATA ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "name": "긴급녹음",
     "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Android, iOS",
+    "operatingSystem": "Android",
     "inLanguage": "ko",
     "description": "위급상황에서 0.5초 즉시 녹음으로 증거를 보존하는 앱",
     "offers": [
-      {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "KRW",
-        "name": "무료"
-      },
-      {
-        "@type": "Offer",
-        "price": "5900",
-        "priceCurrency": "KRW",
-        "name": "Pro"
-      }
+      { "@type": "Offer", "price": "0", "priceCurrency": "KRW", "name": "무료" },
+      { "@type": "Offer", "price": "5900", "priceCurrency": "KRW", "name": "Pro" }
     ]
   }
   </script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1065,55 +1250,26 @@
       {
         "@type": "Question",
         "name": "대화 당사자가 녹음하면 합법인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "대화 당사자의 녹음은 제3자 도청과 다르게 해석되는 것이 일반적입니다. 다만 개별 사건은 법률 전문가 상담을 권장합니다."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "대화 당사자의 녹음은 제3자 도청과 다르게 해석되며, 실무상 합법입니다. 개별 사건은 법률 전문가 상담을 권장합니다." }
       },
       {
         "@type": "Question",
         "name": "왜 일반 녹음앱보다 빠른가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "긴급녹음은 메뉴 진입보다 녹음 시작 로직을 우선 처리해 0.5초 수준의 즉시 시작을 목표로 설계했습니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "스텔스 모드는 어떤 상황에서 유용한가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "화면 노출 자체가 리스크인 상황에서 사용자 존재감을 낮추며 기록을 유지하는 데 유용합니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "무료 플랜 제한은 무엇인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "핵심 기능은 무료로 모두 사용 가능하며, 무료 플랜은 저장 개수와 길이에 제한이 있습니다. Pro는 이 한계를 해제하는 선택 옵션입니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Pro 결제는 구독인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "현재 명세 기준 Pro는 5,900원 일회성입니다. 정책 변경 시 스토어 공지가 우선 적용됩니다."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "긴급녹음은 메뉴 진입 대신 녹음 시작 로직을 최우선 처리해 0.5초 수준의 즉시 시작을 구현합니다." }
       },
       {
         "@type": "Question",
         "name": "녹음 파일은 어디에 저장되나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "기기 저장을 기본으로 하며, 사용자가 직접 관리·공유·백업할 수 있게 구성됩니다."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "모든 녹음은 사용자 기기에만 저장됩니다. 서버 전송 없음. 개발사도 접근할 수 없습니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "Pro는 구독인가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pro는 5,900원 일회성 결제입니다. 월간/연간 구독이 아닙니다." }
       }
     ]
   }
   </script>
+
 </body>
 </html>
-
-
