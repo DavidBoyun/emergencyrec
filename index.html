@@ -160,7 +160,7 @@
 
     /* ===== 1. HERO ===== */
     header.hero {
-      padding: 24px 0 48px;
+      padding: 68px 0 48px;
     }
 
     .hero-wrap {
@@ -770,6 +770,198 @@
       color: #4b5563;
     }
 
+    /* ===== GNB ===== */
+    .gnb {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 max(16px, calc((100vw - var(--maxw)) / 2));
+      background: rgba(10,10,14,0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .gnb-brand {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-strong);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gnb-brand span {
+      color: var(--accent-2);
+    }
+
+    .gnb-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .gnb-links a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9a9ab4;
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .gnb-links a:hover { color: var(--text-strong); }
+
+    .gnb-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      padding: 7px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .15s, filter .15s;
+    }
+
+    .gnb-cta:hover { transform: translateY(-1px); filter: brightness(1.1); }
+
+    /* ===== REVIEWS CAROUSEL ===== */
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .reviews-stars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .reviews-stars .stars {
+      color: #fbbf24;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+
+    .reviews-stars span {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .reviews-nav {
+      display: flex;
+      gap: 6px;
+    }
+
+    .reviews-nav button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #3a3a5f;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .reviews-nav button:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-strong);
+    }
+
+    .reviews-track-wrap {
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+    }
+
+    .reviews-track-wrap::-webkit-scrollbar { display: none; }
+
+    .reviews-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      padding-bottom: 8px;
+    }
+
+    .review-card {
+      width: 280px;
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      background: linear-gradient(180deg, var(--card), var(--card-soft));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .review-card .rc-stars {
+      color: #fbbf24;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .review-card q {
+      display: block;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+      font-style: normal;
+      margin-bottom: 14px;
+    }
+
+    .review-card .rc-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-card .rc-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255,51,51,0.12);
+      border: 1px solid rgba(255,51,51,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffa8a8;
+      flex-shrink: 0;
+    }
+
+    .review-card .rc-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+
+    .review-card .rc-tag {
+      font-size: 11px;
+      color: #7a7a92;
+    }
+
+    @media (max-width: 600px) {
+      .review-card { width: 260px; }
+      .reviews-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .gnb { padding: 0 12px; }
+      .gnb-links a.hide-mobile { display: none; }
+    }
+
     /* ===== STICKY CTA ===== */
     .sticky-cta {
       position: fixed;
@@ -819,14 +1011,7 @@
       fill: #8a8aa0;
     }
 
-    /* ===== SOCIAL PROOF ===== */
-    .social-proof {
-      margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
+    /* ===== SOCIAL PROOF (install counter) ===== */
     .proof-installs {
       display: inline-flex;
       align-items: center;
@@ -847,57 +1032,6 @@
     @keyframes proof-pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
-    }
-
-    .testimonials {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .testimonial {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid #2a2a42;
-      max-width: 280px;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .testimonial-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255,51,51,0.15);
-      border: 1px solid rgba(255,51,51,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: #ffa8a8;
-      flex-shrink: 0;
-    }
-
-    .testimonial-body {
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .testimonial-body q {
-      color: var(--text);
-      font-style: normal;
-    }
-
-    .testimonial-body .testimonial-tag {
-      display: block;
-      margin-top: 4px;
-      font-size: 11px;
-      color: #7a7a92;
     }
 
     /* ===== PHONE SEQUENCE ANIMATION ===== */
@@ -1005,9 +1139,7 @@
       .hero-wrap { grid-template-columns: 1fr; text-align: center; }
       .hero-cta { justify-content: center; }
       .friction-text { text-align: center; }
-      .social-proof { align-items: center; }
       .proof-installs { justify-content: center; }
-      .testimonials { justify-content: center; }
       .phone { width: min(240px, 64vw); }
       .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .demo-steps { grid-template-columns: 1fr; }
@@ -1022,8 +1154,6 @@
       .counter-grid { grid-template-columns: 1fr; }
       .section { padding: 40px 0; }
       .hero { padding-top: 16px; }
-      .testimonials { flex-direction: column; }
-      .testimonial { max-width: none; }
       .sticky-cta { padding: 10px 12px; }
       .sticky-cta p { font-size: 12px; }
       .sticky-cta .btn { min-height: 40px; padding: 8px 14px; font-size: 13px; }
@@ -1040,6 +1170,18 @@
 </head>
 <body>
 
+  <!-- ===== GNB ===== -->
+  <nav class="gnb" aria-label="메인 네비게이션">
+    <a href="#top" class="gnb-brand"><span>REC</span> 긴급녹음</a>
+    <div class="gnb-links">
+      <a href="#cases">실제사건</a>
+      <a href="#reviews">후기</a>
+      <a href="#faq">FAQ</a>
+      <a href="/ko/blog/" class="hide-mobile">블로그</a>
+      <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="gnb-cta" target="_blank" rel="noopener">무료 설치</a>
+    </div>
+  </nav>
+
   <!-- ===== 1. HERO: 편도체 3초 활성화 + 손실회피 CTA ===== -->
   <header class="hero" id="top">
     <div class="container hero-wrap">
@@ -1054,32 +1196,7 @@
         </div>
         <p class="friction-text">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
 
-        <div class="social-proof">
-          <p class="proof-installs"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count">0</strong>명이 미리 설치했습니다</p>
-          <div class="testimonials">
-            <div class="testimonial">
-              <div class="testimonial-avatar">김*</div>
-              <div class="testimonial-body">
-                <q>직장 상사 폭언 상황에서 바로 켰어요. 진짜 0.5초만에 시작되더라구요.</q>
-                <span class="testimonial-tag">직장인 · 2026.02</span>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-avatar">이*</div>
-              <div class="testimonial-body">
-                <q>부동산 중개사 말 바뀔까봐 깔아뒀는데, 역시 녹음해둔 게 증거가 됐어요.</q>
-                <span class="testimonial-tag">전세 세입자 · 2026.01</span>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-avatar">박*</div>
-              <div class="testimonial-body">
-                <q>화면이 바로 사라져서 상대가 눈치 못 챔. 이게 핵심.</q>
-                <span class="testimonial-tag">자영업자 · 2026.02</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p class="proof-installs" style="margin-top:14px;"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count">0</strong>명이 미리 설치했습니다</p>
       </div>
 
       <aside class="fade-up" style="display:flex; flex-direction:column; gap:14px;">
@@ -1362,6 +1479,112 @@
       </div>
     </section>
 
+    <!-- ===== 8.5. REVIEWS CAROUSEL ===== -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="reviews-header">
+          <div>
+            <span class="label fade-up">사용 후기</span>
+            <h2 class="section-title fade-up">실제 사용자들의 이야기</h2>
+            <div class="reviews-stars fade-up">
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="latin" style="font-weight:700; color:var(--text-strong);">4.9</span>
+              <span>평점</span>
+            </div>
+          </div>
+          <div class="reviews-nav fade-up">
+            <button id="rv-prev" aria-label="이전 후기">&#8592;</button>
+            <button id="rv-next" aria-label="다음 후기">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="reviews-track-wrap" id="rv-track-wrap">
+          <div class="reviews-track" id="rv-track">
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>직장 상사 폭언 상황에서 바로 켰어요. 진짜 0.5초만에 시작되더라구요. 증거 확보 완료.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">김*</div>
+                <div><div class="rc-name">김*수 님</div><div class="rc-tag">30대 직장인</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>부동산 중개사 말 바뀔까봐 깔아뒀는데, 역시 녹음해둔 게 증거가 됐어요. 전세금 돌려받았습니다.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">이*</div>
+                <div><div class="rc-name">이*진 님</div><div class="rc-tag">전세 세입자</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>화면이 바로 사라져서 상대가 눈치 못 챔. 이게 핵심이에요. 스텔스 기능 진짜 대박.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">박*</div>
+                <div><div class="rc-name">박*호 님</div><div class="rc-tag">자영업자</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>교통사고 났을 때 상대방이 말 바꿀까봐 바로 녹음 시작했어요. 보험 처리할 때 결정적이었습니다.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">최*</div>
+                <div><div class="rc-name">최*영 님</div><div class="rc-tag">40대 운전자</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>Pro 결제했는데 알림에서 바로 정지되고 화면도 안 뜸. 회의 중에 몰래 녹음할 때 완벽해요.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">정*</div>
+                <div><div class="rc-name">정*은 님</div><div class="rc-tag">대기업 사원</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>임대인이 보증금 안 준다고 할 때 녹음 파일 보여줬더니 바로 입금해줬습니다. 녹음 = 방패.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">한*</div>
+                <div><div class="rc-name">한*미 님</div><div class="rc-tag">20대 대학원생</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>아이 학교폭력 상담에서 담임이 축소하길래 녹음해뒀어요. 교육청 신고할 때 큰 도움이 됐습니다.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">송*</div>
+                <div><div class="rc-name">송*현 님</div><div class="rc-tag">학부모</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>다른 녹음앱은 켜는데 한참 걸리는데 이건 진짜 찰나예요. 긴급 상황에 이거 아니면 못 씀.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">윤*</div>
+                <div><div class="rc-name">윤*석 님</div><div class="rc-tag">50대 자영업</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>무료인데 핵심 기능은 다 되고, Pro도 5,900원 일회성이라 부담 없이 결제했어요. 광고도 없어져서 만족!</q>
+              <div class="rc-user">
+                <div class="rc-avatar">강*</div>
+                <div><div class="rc-name">강*우 님</div><div class="rc-tag">30대 프리랜서</div></div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <q>서버 전송 없이 기기에만 저장되는 게 마음에 들어요. 민감한 녹음이라 보안이 가장 중요했거든요.</q>
+              <div class="rc-user">
+                <div class="rc-avatar">임*</div>
+                <div><div class="rc-name">임*정 님</div><div class="rc-tag">변호사</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== 9. FINAL CTA: 손실 프레이밍 ===== -->
     <section class="section" id="final-cta">
       <div class="container">
@@ -1501,6 +1724,45 @@
 
       if (phoneHome && recContent) {
         runPhoneSequence();
+      }
+
+      /* Reviews carousel auto-scroll */
+      var rvWrap = document.getElementById('rv-track-wrap');
+      var rvPrev = document.getElementById('rv-prev');
+      var rvNext = document.getElementById('rv-next');
+      var rvScrollAmt = 294; /* card width 280 + gap 14 */
+      var rvPaused = false;
+      var rvAutoId;
+
+      function rvAutoScroll() {
+        rvAutoId = setInterval(function () {
+          if (rvPaused || !rvWrap) return;
+          if (rvWrap.scrollLeft + rvWrap.clientWidth >= rvWrap.scrollWidth - 10) {
+            rvWrap.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            rvWrap.scrollBy({ left: rvScrollAmt, behavior: 'smooth' });
+          }
+        }, 3500);
+      }
+
+      if (rvWrap) {
+        if (rvNext) rvNext.addEventListener('click', function () {
+          rvPaused = true;
+          rvWrap.scrollBy({ left: rvScrollAmt, behavior: 'smooth' });
+          setTimeout(function () { rvPaused = false; }, 5000);
+        });
+        if (rvPrev) rvPrev.addEventListener('click', function () {
+          rvPaused = true;
+          rvWrap.scrollBy({ left: -rvScrollAmt, behavior: 'smooth' });
+          setTimeout(function () { rvPaused = false; }, 5000);
+        });
+        rvWrap.addEventListener('mouseenter', function () { rvPaused = true; });
+        rvWrap.addEventListener('mouseleave', function () { rvPaused = false; });
+        rvWrap.addEventListener('touchstart', function () { rvPaused = true; });
+        rvWrap.addEventListener('touchend', function () {
+          setTimeout(function () { rvPaused = false; }, 5000);
+        });
+        rvAutoScroll();
       }
 
       if (!window.gsap || !window.ScrollTrigger) return;
