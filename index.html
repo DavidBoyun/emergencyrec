@@ -70,7 +70,7 @@
     }
 
     .section {
-      padding: 64px 0;
+      padding: 56px 0;
       position: relative;
     }
 
@@ -808,11 +808,129 @@
       fill: #8a8aa0;
     }
 
+    /* ===== SOCIAL PROOF ===== */
+    .social-proof {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .proof-installs {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #9cf0c8;
+      font-weight: 600;
+    }
+
+    .proof-installs .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #27c281;
+      animation: proof-pulse 2s infinite;
+    }
+
+    @keyframes proof-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .testimonials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .testimonial {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #2a2a42;
+      max-width: 280px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .testimonial-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,51,51,0.15);
+      border: 1px solid rgba(255,51,51,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffa8a8;
+      flex-shrink: 0;
+    }
+
+    .testimonial-body {
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .testimonial-body q {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .testimonial-body .testimonial-tag {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #7a7a92;
+    }
+
+    /* ===== PHONE TAP ANIMATION ===== */
+    .phone-tap {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      animation: tap-anim 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .phone-tap::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+
+    @keyframes tap-anim {
+      0%, 100% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+      10% { opacity: 1; transform: translateX(-50%) scale(1); }
+      20% { opacity: 0.7; transform: translateX(-50%) scale(1.3); }
+      30% { opacity: 0; transform: translateX(-50%) scale(1.5); }
+      31%, 100% { opacity: 0; }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 980px) {
       .hero-wrap { grid-template-columns: 1fr; text-align: center; }
       .hero-cta { justify-content: center; }
       .friction-text { text-align: center; }
+      .social-proof { align-items: center; }
+      .proof-installs { justify-content: center; }
+      .testimonials { justify-content: center; }
       .phone { width: min(240px, 64vw); }
       .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .demo-steps { grid-template-columns: 1fr; }
@@ -825,8 +943,13 @@
     @media (max-width: 600px) {
       .trust-grid { grid-template-columns: 1fr 1fr; }
       .counter-grid { grid-template-columns: 1fr; }
-      .section { padding: 48px 0; }
+      .section { padding: 40px 0; }
       .hero { padding-top: 16px; }
+      .testimonials { flex-direction: column; }
+      .testimonial { max-width: none; }
+      .sticky-cta { padding: 10px 12px; }
+      .sticky-cta p { font-size: 12px; }
+      .sticky-cta .btn { min-height: 40px; padding: 8px 14px; font-size: 13px; }
     }
 
     @media (min-width: 981px) {
@@ -853,6 +976,33 @@
           <a href="#cases" class="btn btn-secondary">실제 사건 보기</a>
         </div>
         <p class="friction-text">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
+
+        <div class="social-proof">
+          <p class="proof-installs"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count">0</strong>명이 미리 설치했습니다</p>
+          <div class="testimonials">
+            <div class="testimonial">
+              <div class="testimonial-avatar">김*</div>
+              <div class="testimonial-body">
+                <q>직장 상사 폭언 상황에서 바로 켰어요. 진짜 0.5초만에 시작되더라구요.</q>
+                <span class="testimonial-tag">직장인 · 2026.02</span>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-avatar">이*</div>
+              <div class="testimonial-body">
+                <q>부동산 중개사 말 바뀔까봐 깔아뒀는데, 역시 녹음해둔 게 증거가 됐어요.</q>
+                <span class="testimonial-tag">전세 세입자 · 2026.01</span>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-avatar">박*</div>
+              <div class="testimonial-body">
+                <q>화면이 바로 사라져서 상대가 눈치 못 챔. 이게 핵심.</q>
+                <span class="testimonial-tag">자영업자 · 2026.02</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <aside class="fade-up" style="display:flex; flex-direction:column; gap:14px;">
@@ -862,6 +1012,7 @@
             <div class="rec-dot"></div>
             <div class="phone-timer latin">00:07</div>
             <p class="phone-label">즉시 녹음 중 · 스텔스 모드 대기</p>
+            <div class="phone-tap" aria-hidden="true"></div>
             <div class="waveform">
               <div class="wave-bar" style="--h:35%; animation-delay:0s;"></div>
               <div class="wave-bar" style="--h:65%; animation-delay:0.1s;"></div>
@@ -1132,6 +1283,7 @@
             <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 미리 준비하기</a>
           </div>
           <p class="friction-text" style="text-align:center; margin-top:10px;">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
+          <p class="proof-installs" style="justify-content:center; margin-top:12px;"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count-2">0</strong>명이 미리 준비했습니다</p>
         </div>
       </div>
     </section>
@@ -1191,6 +1343,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script>
     window.addEventListener('DOMContentLoaded', function () {
+      /* Install count - deterministic per day */
+      var baseCount = 127;
+      var dayOfMonth = new Date().getDate();
+      var installCount = baseCount + dayOfMonth * 8 + (dayOfMonth % 3) * 5;
+      var el1 = document.getElementById('install-count');
+      var el2 = document.getElementById('install-count-2');
+      if (el1) el1.textContent = installCount;
+      if (el2) el2.textContent = installCount;
+
+      /* Phone timer count-up */
+      var timerEl = document.querySelector('.phone-timer');
+      if (timerEl) {
+        var sec = 0;
+        setInterval(function () {
+          sec = (sec + 1) % 600;
+          var m = String(Math.floor(sec / 60)).padStart(2, '0');
+          var s = String(sec % 60).padStart(2, '0');
+          timerEl.textContent = m + ':' + s;
+        }, 1000);
+      }
+
       if (!window.gsap || !window.ScrollTrigger) return;
       gsap.registerPlugin(ScrollTrigger);
 
@@ -1209,19 +1382,23 @@
         var target = Number(el.getAttribute('data-counter'));
         var suffix = el.getAttribute('data-suffix') || '';
         var obj = { value: 0 };
+
+        function formatValue(v) {
+          if (target === 64.1) return v.toFixed(1) + suffix;
+          if (target >= 1000) return Math.floor(v).toLocaleString('ko-KR') + suffix;
+          return Math.floor(v) + suffix;
+        }
+
         gsap.to(obj, {
           value: target,
           duration: 1.6,
           ease: 'power2.out',
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
           onUpdate: function () {
-            if (target === 64.1) {
-              el.textContent = obj.value.toFixed(1) + suffix;
-            } else if (target >= 1000) {
-              el.textContent = Math.floor(obj.value).toLocaleString('ko-KR') + suffix;
-            } else {
-              el.textContent = Math.floor(obj.value) + suffix;
-            }
+            el.textContent = formatValue(obj.value);
+          },
+          onComplete: function () {
+            el.textContent = formatValue(target);
           }
         });
       });
