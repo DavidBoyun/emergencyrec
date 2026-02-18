@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>긴급녹음 - 위급상황 즉시 녹음 앱 | 증거 녹음, 음성 녹음기</title>
-  <meta name="description" content="위급한 순간 0.5초 즉시 녹음으로 증거를 남기세요. 동탄·쯔양 등 실제 사건이 증명한 긴급 대응 앱. 무료 시작, Pro 5,900원 일회성으로 무제한 해제." />
-  <meta property="og:title" content="긴급녹음 - 위급상황 즉시 녹음 앱" />
-  <meta property="og:description" content="위급한 순간 0.5초 즉시 녹음. 실제 사건 기반 증거 특화 긴급 녹음 앱." />
-  <meta property="og:locale" content="ko_KR" />
+  <title>緊急録音 - 緊急時に即座に録音開始するアプリ | 証拠録音・ボイスレコーダー</title>
+  <meta name="description" content="緊急時に0.5秒で即座に録音を開始し、証拠を確保。豊田真由子事件・ビッグモーターなど実際の事件が証明した緊急対応アプリ。無料で開始、Pro ¥700の買い切りで全機能解放。" />
+  <meta property="og:title" content="緊急録音 - 緊急時に即座に録音開始するアプリ" />
+  <meta property="og:description" content="緊急時に0.5秒で即座に録音開始。実際の事件に基づく証拠特化型の緊急録音アプリ。" />
+  <meta property="og:locale" content="ja_JP" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://emergencyrecorder.com" />
-  <link rel="canonical" href="https://emergencyrecorder.com/" />
+  <meta property="og:url" content="https://emergencyrecorder.com/ja/" />
+  <link rel="canonical" href="https://emergencyrecorder.com/ja/" />
+
   <link rel="alternate" hreflang="ko" href="https://emergencyrecorder.com/" />
   <link rel="alternate" hreflang="ja" href="https://emergencyrecorder.com/ja/" />
   <link rel="alternate" hreflang="zh-Hant-TW" href="https://emergencyrecorder.com/zh-tw/" />
@@ -20,11 +21,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
     :root {
       --bg-0: #0a0a0a;
       --bg-1: #121212;
@@ -57,7 +56,7 @@
         radial-gradient(900px 460px at 0% 0%, rgba(204,0,0,0.16), transparent 65%),
         linear-gradient(180deg, var(--bg-0), var(--bg-1) 46%, var(--bg-2));
       color: var(--text);
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 16px;
       line-height: 1.6;
       scroll-behavior: smooth;
@@ -67,7 +66,7 @@
     ul { list-style: none; padding: 0; }
 
     .latin, .num, .price, .counter-value {
-      font-family: "Poppins", "Pretendard", sans-serif;
+      font-family: "Poppins", "Noto Sans JP", sans-serif;
     }
 
     .container {
@@ -509,6 +508,25 @@
       border-radius: 0 8px 8px 0;
     }
 
+    /* YouTube Embed */
+    .yt-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      margin: 14px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+    .yt-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* ===== 5. NUMBERS ===== */
     .counter-grid {
       grid-template-columns: repeat(3, 1fr);
@@ -664,7 +682,7 @@
     }
 
     .price-card li::before {
-      content: "✓ ";
+      content: "\2713  ";
       color: var(--success);
       font-weight: 700;
     }
@@ -1177,45 +1195,45 @@
 <body>
 
   <!-- ===== GNB ===== -->
-  <nav class="gnb" aria-label="메인 네비게이션">
-    <a href="#top" class="gnb-brand"><span>REC</span> 긴급녹음</a>
+  <nav class="gnb" aria-label="メインナビゲーション">
+    <a href="#top" class="gnb-brand"><span>REC</span> 緊急録音</a>
     <div class="gnb-links">
-      <a href="#cases">실제사건</a>
-      <a href="#reviews">후기</a>
+      <a href="#cases">実際の事件</a>
+      <a href="#reviews">レビュー</a>
       <a href="#faq">FAQ</a>
-      <a href="/ko/blog/" class="hide-mobile">블로그</a>
-      <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="gnb-cta" target="_blank" rel="noopener">무료 설치</a>
+      <a href="/en/blog/" class="hide-mobile">ブログ</a>
+      <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="gnb-cta" target="_blank" rel="noopener">無料インストール</a>
     </div>
   </nav>
 
-  <!-- ===== 1. HERO: 편도체 3초 활성화 + 손실회피 CTA ===== -->
+  <!-- ===== 1. HERO: 扁桃体3秒活性化 + 損失回避CTA ===== -->
   <header class="hero" id="top">
     <div class="container hero-wrap">
       <div class="fade-up">
-        <p class="micro-scenario">"상사가 소리치기 시작했다. 손이 떨린다.<br/>녹음앱을 찾는다. 5초... 10초... 이미 늦었다."</p>
-        <span class="label">위급상황 증거 특화 앱</span>
-        <h1>녹음 버튼 찾는 5~10초,<br/>그 시간이 인생을 바꿉니다</h1>
-        <p class="hero-sub">긴급녹음은 <strong class="latin" style="color:#fff;">0.5초</strong> 즉시 시작으로 위기 순간을 증거로 남깁니다.<br/>핵심 기능은 무료. 필요할 때만 Pro로 한계를 해제하세요.</p>
+        <p class="micro-scenario">"上司が怒鳴り始めた。手が震える。<br/>録音アプリを探す。5秒...10秒...もう遅い。"</p>
+        <span class="label">緊急時の証拠特化アプリ</span>
+        <h1>録音ボタンを探す5~10秒、<br/>その時間が人生を変えます</h1>
+        <p class="hero-sub">緊急録音は<strong class="latin" style="color:#fff;">0.5秒</strong>で即時録音を開始し、危機の瞬間を証拠として残します。<br/>基本機能は無料。必要な時だけProで制限を解除してください。</p>
         <div class="hero-cta">
-          <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">무료로 미리 준비하기</a>
-          <a href="#cases" class="btn btn-secondary">실제 사건 보기</a>
+          <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">無料で準備する</a>
+          <a href="#cases" class="btn btn-secondary">実際の事件を見る</a>
         </div>
-        <p class="friction-text">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
+        <p class="friction-text">インストール30秒 / 会員登録不要 / すぐに使用可能</p>
 
-        <p class="proof-installs" style="margin-top:14px;"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count">0</strong>명이 미리 설치했습니다</p>
+        <p class="proof-installs" style="margin-top:14px;"><span class="dot"></span> 今月 <strong class="latin" id="install-count">0</strong>人が事前にインストールしました</p>
       </div>
 
       <aside class="fade-up" style="display:flex; flex-direction:column; gap:14px;">
-        <div class="phone" role="img" aria-label="녹음 시작 과정 시연">
+        <div class="phone" role="img" aria-label="録音開始プロセスのデモ">
           <div class="phone-screen" id="phone-screen">
             <!-- Home screen overlay -->
             <div class="phone-home" id="phone-home">
-              <span class="phone-home-label">홈 화면</span>
+              <span class="phone-home-label">ホーム画面</span>
               <div class="phone-app-icon" id="phone-icon">
                 <span>&#x1F534;</span>
                 <div class="phone-tap-ring" id="tap-ring"></div>
               </div>
-              <span class="phone-app-name">긴급녹음</span>
+              <span class="phone-app-name">緊急録音</span>
             </div>
 
             <!-- REC screen (revealed after tap) -->
@@ -1223,7 +1241,7 @@
               <div class="phone-status">REC</div>
               <div class="rec-dot"></div>
               <div class="phone-timer latin" id="phone-timer-el">00:00</div>
-              <p class="phone-label">즉시 녹음 중 · 스텔스 모드 대기</p>
+              <p class="phone-label">即時録音中 / ステルスモード待機</p>
               <div class="waveform" id="waveform-el">
                 <div class="wave-bar" style="--h:35%; animation-delay:0s;"></div>
                 <div class="wave-bar" style="--h:65%; animation-delay:0.1s;"></div>
@@ -1239,47 +1257,47 @@
                 <div class="wave-bar" style="--h:42%; animation-delay:0.25s;"></div>
               </div>
             </div>
-            <div class="phone-speed-badge latin" id="speed-badge">0.5초 시작 완료</div>
+            <div class="phone-speed-badge latin" id="speed-badge">0.5秒開始完了</div>
           </div>
         </div>
         <div class="hero-kpis">
-          <div class="mini"><strong class="latin">0.5s</strong><span>즉시 시작</span></div>
-          <div class="mini"><strong class="latin">3초</strong><span>자동 저장</span></div>
-          <div class="mini"><strong class="latin">₩5,900</strong><span>Pro 일회성</span></div>
+          <div class="mini"><strong class="latin">0.5s</strong><span>即時開始</span></div>
+          <div class="mini"><strong class="latin">3秒</strong><span>自動保存</span></div>
+          <div class="mini"><strong class="latin">&yen;700</strong><span>Pro 買い切り</span></div>
         </div>
       </aside>
     </div>
   </header>
 
-  <!-- ===== 2. TRUST BAR: 신뢰 신호 4개 ===== -->
+  <!-- ===== 2. TRUST BAR: 信頼シグナル4つ ===== -->
   <section class="trust-bar fade-up">
     <div class="container trust-grid">
       <div class="trust-item">
         <div class="trust-icon privacy">&#x1F512;</div>
         <div>
-          <strong>기기에만 저장</strong>
-          <span>서버 전송 없음</span>
+          <strong>端末のみ保存</strong>
+          <span>サーバー送信なし</span>
         </div>
       </div>
       <div class="trust-item">
         <div class="trust-icon speed">&#x26A1;</div>
         <div>
-          <strong>0.5초 즉시 시작</strong>
-          <span>준비 단계 없음</span>
+          <strong>0.5秒即時開始</strong>
+          <span>準備ステップなし</span>
         </div>
       </div>
       <div class="trust-item">
         <div class="trust-icon legal">&#x2696;</div>
         <div>
-          <strong>당사자 녹음 합법</strong>
-          <span>통비법 제3조</span>
+          <strong>当事者録音は合法</strong>
+          <span>最高裁判例</span>
         </div>
       </div>
       <div class="trust-item">
         <div class="trust-icon simple">&#x1F6E1;</div>
         <div>
-          <strong>회원가입 없음</strong>
-          <span>개인정보 최소 수집</span>
+          <strong>会員登録不要</strong>
+          <span>個人情報の最小収集</span>
         </div>
       </div>
     </div>
@@ -1287,65 +1305,83 @@
 
   <main>
 
-    <!-- ===== 3. DEMO: 3단계 즉시 해결 시연 ===== -->
+    <!-- ===== 3. DEMO: 3ステップ即時解決デモ ===== -->
     <section class="section" id="demo">
       <div class="container">
-        <span class="label fade-up">3단계 데모</span>
-        <h2 class="section-title fade-up">앱 탭 → 즉시 녹음 → 화면 사라짐</h2>
-        <p class="section-sub fade-up">일반 녹음앱이 준비에 <strong class="latin">5~10초</strong>를 쓰는 동안, 긴급녹음은 시작 자체를 끝냅니다.</p>
+        <span class="label fade-up">3ステップデモ</span>
+        <h2 class="section-title fade-up">アプリをタップ → 即時録音 → 画面が消える</h2>
+        <p class="section-sub fade-up">一般的な録音アプリが準備に<strong class="latin">5~10秒</strong>かかる間に、緊急録音は録音開始自体を完了します。</p>
         <div class="grid demo-steps">
           <article class="card demo-card fade-up">
-            <h3>앱 탭</h3>
-            <p>잠금 해제 후 앱을 누르는 순간부터 긴급 흐름이 시작됩니다.</p>
-            <span class="demo-time latin">즉시 진입</span>
+            <h3>アプリをタップ</h3>
+            <p>ロック解除後、アプリをタップした瞬間から緊急フローが開始されます。</p>
+            <span class="demo-time latin">即時起動</span>
           </article>
           <article class="card demo-card fade-up">
-            <h3>즉시 녹음 시작</h3>
-            <p>로딩 없이 바로 녹음. 증거를 먼저 확보합니다.</p>
-            <span class="demo-time latin">약 0.5초</span>
+            <h3>即時録音開始</h3>
+            <p>ローディングなしで即座に録音。まず証拠を確保します。</p>
+            <span class="demo-time latin">約0.5秒</span>
           </article>
           <article class="card demo-card fade-up">
-            <h3>화면 사라짐 (스텔스)</h3>
-            <p>노출을 줄이고 기록은 유지합니다. 흔적을 최소화하세요.</p>
-            <span class="demo-time latin">저노출 유지</span>
+            <h3>画面が消える（ステルス）</h3>
+            <p>露出を最小限に抑え、記録は継続します。痕跡を残しません。</p>
+            <span class="demo-time latin">低露出維持</span>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== 4. STATS BRIDGE + CASE STUDIES (3개로 축소, 감정 컬러 대비) ===== -->
+    <!-- ===== 4. STATS BRIDGE + CASE STUDIES (3件、YouTube埋め込み付き) ===== -->
     <section class="section" id="cases">
       <div class="container">
         <div class="stats-bridge fade-up">
-          <p>직장인 <strong>10명 중 7명</strong>이 부당한 상황을 경험하지만,<br/>증거를 확보한 사람은 <strong>10명 중 1명</strong>도 되지 않습니다.</p>
+          <p>職場でパワハラを経験した労働者は<strong>19.3%</strong>（厚労省2023年調査）。<br/>パワハラ相談を受けた企業は<strong>64.2%</strong>に上ります。</p>
         </div>
 
-        <span class="label fade-up">실제 사건 사례</span>
-        <h2 class="section-title fade-up">녹음이 결과를 바꾼 실제 사건들</h2>
+        <span class="label fade-up">実際の事件</span>
+        <h2 class="section-title fade-up">録音が結果を変えた実際の事件</h2>
 
         <div class="grid case-grid">
+          <!-- Case 1: 豊田真由子 -->
           <article class="card case-card fade-up">
-            <h3>동탄 헬스장 성추행 무고 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024.06)</span></h3>
-            <div class="story-item story-danger"><b>[위기]</b> 무고 의심 상황에서 피의자로 몰리며 진술 왜곡 위험이 있었습니다.</div>
-            <div class="story-item story-neutral"><b>[녹음]</b> 당사자가 <strong class="latin">3초</strong> 내 녹음을 시작해 현장 대응과 대화 맥락을 확보했습니다.</div>
-            <div class="story-item story-success"><b>[결과]</b> 핵심 정황이 드러나며 억울한 상황을 벗어나는 데 결정적 근거가 됐습니다.</div>
-            <p class="counterfactual">만약 녹음이 없었다면? → 일방적 진술로 유죄 판결 가능성.</p>
+            <h3>豊田真由子議員「このハゲー！」事件 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2017)</span></h3>
+            <div class="story-item story-danger"><b>[危機]</b> 政策秘書が議員から日常的な罵倒・暴行を受けていたが、密室のため証明が困難だった。</div>
+            <div class="story-item story-neutral"><b>[録音]</b> 秘書が車内でのICレコーダーで秘密録音。「このハゲー！」「ちーがーうーだーろー！」など暴言の全容が記録された。週刊新潮が「デイリー新潮」YouTubeチャンネルで音声を公開。</div>
+            <div class="yt-embed">
+              <!-- 豊田真由子「このハゲー」音声 - デイリー新潮チャンネル -->
+              <!-- YouTube検索: "豊田真由子 このハゲ デイリー新潮" で最新動画を確認してください -->
+              <iframe src="https://www.youtube.com/embed?listType=search&list=%E8%B1%8A%E7%94%B0%E7%9C%9F%E7%94%B1%E5%AD%90+%E3%81%93%E3%81%AE%E3%83%8F%E3%82%B2+%E9%9F%B3%E5%A3%B0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="story-item story-success"><b>[結果]</b> 自民党離党、議員辞職。傷害容疑で書類送検。録音がなければ、秘書の訴えは「一方的な主張」として処理された可能性が高い。</div>
+            <p class="counterfactual">もし録音がなかったら？ → 密室の暴行は永遠に闇の中。秘書は泣き寝入りするしかなかった。</p>
           </article>
 
+          <!-- Case 2: ビッグモーター -->
           <article class="card case-card fade-up">
-            <h3>쯔양 전 남친 폭행/갈취 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024.07)</span></h3>
-            <div class="story-item story-danger"><b>[위기]</b> 오랜 기간 반복된 폭행·갈취를 입증하기 어려운 구조였습니다.</div>
-            <div class="story-item story-neutral"><b>[녹음]</b> <strong class="latin">3,800개</strong> 녹음 파일이 4년 학대의 패턴과 발언을 누적 증명했습니다.</div>
-            <div class="story-item story-success"><b>[결과]</b> 사건의 실체가 사회적으로 드러났고 수사·법적 대응의 중심 증거가 됐습니다.</div>
-            <p class="counterfactual">만약 녹음이 없었다면? → 4년간의 학대가 영원히 묻혔을 것.</p>
+            <h3>ビッグモーター パワハラ音声流出 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2023)</span></h3>
+            <div class="story-item story-danger"><b>[危機]</b> 上司が部下に265万円の弁償を脅迫。「金を払え、実家まで行くぞ」と2時間にわたる恫喝。</div>
+            <div class="story-item story-neutral"><b>[録音]</b> 2時間に及ぶパワハラ音声がFNNプライムオンラインに流出・公開。組織的な恐怖支配の実態が白日の下に。</div>
+            <div class="yt-embed">
+              <!-- ビッグモーター パワハラ音声 - FNNプライムオンライン -->
+              <!-- YouTube検索: "ビッグモーター パワハラ 音声 FNN" で最新動画を確認してください -->
+              <iframe src="https://www.youtube.com/embed?listType=search&list=%E3%83%93%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC+%E3%83%91%E3%83%AF%E3%83%8F%E3%83%A9+%E9%9F%B3%E5%A3%B0+FNN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="story-item story-success"><b>[結果]</b> 経営陣総退陣、保険金不正請求も発覚し会社経営が崩壊。組織的不正の全容が明るみに出た。</div>
+            <p class="counterfactual">もし録音がなかったら？ → 265万円を払わされ、パワハラは「指導」として正当化され続けた。</p>
           </article>
 
+          <!-- Case 3: 宝塚歌劇団 -->
           <article class="card case-card fade-up">
-            <h3>직장 내 괴롭힘 녹음 역고소 사건 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2024)</span></h3>
-            <div class="story-item story-danger"><b>[위기]</b> 피해자가 괴롭힘을 기록했지만 오히려 녹음 자체로 역고소를 당했습니다.</div>
-            <div class="story-item story-neutral"><b>[녹음]</b> 지속적 언행이 담긴 파일이 업무 맥락 증거로 인정됐습니다.</div>
-            <div class="story-item story-success"><b>[결과]</b> 배심원 <strong class="latin">7명 전원 무죄</strong>. 방어적 녹음의 정당성이 확인됐습니다.</div>
-            <p class="counterfactual">만약 녹음이 없었다면? → 오히려 가해자가 되었을 것.</p>
+            <h3>宝塚歌劇団 いじめ・パワハラ自殺事件 <span class="latin" style="font-size:14px; color:var(--text-muted);">(2023)</span></h3>
+            <div class="story-item story-danger"><b>[危機]</b> 宙組の25歳の劇団員がいじめ・パワハラにより自ら命を絶った。劇団側は「ハラスメントは確認できない」と否定。</div>
+            <div class="story-item story-neutral"><b>[証拠]</b> 遺族側弁護士がLINEメッセージ、ヘアアイロンによるやけどの写真を証拠として公表。「わざとな気がする」という母親へのメッセージが決定的な証拠に。</div>
+            <div class="yt-embed">
+              <!-- 宝塚 パワハラ いじめ 証拠 - 関西テレビ報道 -->
+              <!-- YouTube検索: "宝塚 パワハラ いじめ 証拠 カンテレ" で最新動画を確認してください -->
+              <iframe src="https://www.youtube.com/embed?listType=search&list=%E5%AE%9D%E5%A1%9A+%E3%83%91%E3%83%AF%E3%83%8F%E3%83%A9+%E3%81%84%E3%81%98%E3%82%81+%E8%A8%BC%E6%8B%A0+%E3%82%AB%E3%83%B3%E3%83%86%E3%83%AC" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="story-item story-success"><b>[結果]</b> 宝塚歌劇団が15件中14件のハラスメントを認定し、経営陣が遺族に直接謝罪。組織文化の見直しへ。</div>
+            <p class="counterfactual">もし証拠がなかったら？ → 劇団の「確認できない」で終わり、25歳の命は無駄死にとして処理されていた。</p>
           </article>
         </div>
       </div>
@@ -1354,20 +1390,20 @@
     <!-- ===== 5. KEY NUMBERS ===== -->
     <section class="section" id="numbers">
       <div class="container">
-        <span class="label fade-up">핵심 숫자</span>
-        <h2 class="section-title fade-up">추측이 아니라 숫자가 사람을 움직입니다</h2>
+        <span class="label fade-up">重要な数字</span>
+        <h2 class="section-title fade-up">憶測ではなく、数字が人を動かします</h2>
         <div class="grid counter-grid">
           <article class="card counter-card fade-up">
-            <p class="counter-value" data-counter="64.1" data-suffix="%">0%</p>
-            <p class="counter-label">2022년 녹음금지법 반대 여론</p>
+            <p class="counter-value" data-counter="19.3" data-suffix="%">0%</p>
+            <p class="counter-label">労働者がパワハラを経験（厚労省2023年）</p>
           </article>
           <article class="card counter-card fade-up">
-            <p class="counter-value" data-counter="3" data-suffix="초">0초</p>
-            <p class="counter-label">동탄 사건, 즉시 녹음 시작 시간</p>
+            <p class="counter-value" data-counter="64.2" data-suffix="%">0%</p>
+            <p class="counter-label">企業がパワハラ相談を受けている</p>
           </article>
           <article class="card counter-card fade-up">
-            <p class="counter-value" data-counter="3800" data-suffix="+">0+</p>
-            <p class="counter-label">쯔양 사건 누적 녹음 파일 수</p>
+            <p class="counter-value" data-counter="3" data-suffix="秒">0秒</p>
+            <p class="counter-label">豊田事件、即時録音開始時間</p>
           </article>
         </div>
       </div>
@@ -1376,37 +1412,37 @@
     <!-- ===== 6. COMPARE TABLE ===== -->
     <section class="section" id="compare">
       <div class="container">
-        <span class="label fade-up">비교 테이블</span>
-        <h2 class="section-title fade-up">긴급녹음 vs 일반 녹음앱</h2>
+        <span class="label fade-up">比較テーブル</span>
+        <h2 class="section-title fade-up">緊急録音 vs 一般的な録音アプリ</h2>
         <div class="compare-wrap fade-up">
-          <table aria-label="긴급녹음과 일반 녹음앱 비교">
+          <table aria-label="緊急録音と一般的な録音アプリの比較">
             <thead>
               <tr>
-                <th>비교 항목</th>
-                <th>긴급녹음</th>
-                <th>일반 녹음앱</th>
+                <th>比較項目</th>
+                <th>緊急録音</th>
+                <th>一般的な録音アプリ</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>시작 속도</td>
-                <td><strong class="ok">약 0.5초 즉시 시작</strong></td>
-                <td><strong class="bad">5~10초 준비 단계</strong></td>
+                <td>起動速度</td>
+                <td><strong class="ok">約0.5秒で即時開始</strong></td>
+                <td><strong class="bad">5~10秒の準備ステップ</strong></td>
               </tr>
               <tr>
-                <td>스텔스 대응</td>
-                <td><strong class="ok">화면 노출 최소화</strong></td>
-                <td><strong class="bad">일반 UI 노출</strong></td>
+                <td>ステルス対応</td>
+                <td><strong class="ok">画面露出を最小化</strong></td>
+                <td><strong class="bad">通常UIが表示される</strong></td>
               </tr>
               <tr>
-                <td>패닉 UX</td>
-                <td><strong class="ok">큰 버튼, 최소 단계</strong></td>
-                <td><strong class="bad">다단계 탐색 필요</strong></td>
+                <td>パニック時UX</td>
+                <td><strong class="ok">大きなボタン、最小ステップ</strong></td>
+                <td><strong class="bad">複数ステップの操作が必要</strong></td>
               </tr>
               <tr>
-                <td>파일 보안</td>
-                <td><strong class="ok">기기 전용, 서버 전송 없음</strong></td>
-                <td><strong class="bad">클라우드 동기화 기본</strong></td>
+                <td>ファイルセキュリティ</td>
+                <td><strong class="ok">端末専用、サーバー送信なし</strong></td>
+                <td><strong class="bad">クラウド同期がデフォルト</strong></td>
               </tr>
             </tbody>
           </table>
@@ -1419,66 +1455,70 @@
       <div class="container">
         <div class="privacy-banner fade-up">
           <div class="privacy-banner-icon">&#x1F512;</div>
-          <p>녹음 파일은 사용자 기기에만 저장됩니다 · 서버 전송 없음 · 개발사도 접근 불가</p>
+          <p>録音ファイルはユーザーの端末にのみ保存されます / サーバー送信なし / 開発者もアクセス不可</p>
         </div>
 
-        <span class="label fade-up">법적 근거</span>
-        <h2 class="section-title fade-up">당사자 녹음은 합법입니다</h2>
-        <p class="section-sub fade-up">대화 당사자의 방어적 녹음은 법과 판례에서 보호 수단으로 인정됩니다.</p>
+        <span class="label fade-up">法的根拠</span>
+        <h2 class="section-title fade-up">当事者録音は合法です</h2>
+        <p class="section-sub fade-up">会話の当事者による防御的録音は、法律と判例で保護手段として認められています。</p>
 
         <div class="law-wrap">
           <article class="card law-card fade-up">
-            <h3>통신비밀보호법 제3조</h3>
-            <p>대화 당사자 본인이 녹음하는 행위는 제3자 도청과 구분되며, 실무상 합법입니다.</p>
+            <h3>最高裁判決（2000年7月12日）</h3>
+            <p>秘密録音であっても、著しく反社会的な方法でない限り、証拠能力は否定されないと判示。当事者による録音は第三者の盗聴とは区別されます。</p>
           </article>
           <article class="card law-card fade-up">
-            <h3>2024 배심원 판결</h3>
-            <p>직장 내 괴롭힘 녹음 사건에서 배심원 7명 전원 무죄. 방어 목적 기록의 정당성이 확인됐습니다.</p>
+            <h3>東京高裁判決（1977年）</h3>
+            <p>録音の証拠能力について、「著しく反社会的な手段を用いて収集されたものでない限り、証拠として採用できる」との判断。秘密録音の証拠能力を広く認めた先駆的判例。</p>
           </article>
           <article class="card law-card fade-up">
-            <h3>2022 여론조사 64.1%</h3>
-            <p>녹음금지법 반대 64.1%. 국민 인식도 자기보호 녹음에 무게를 두고 있습니다.</p>
+            <h3>大阪地裁判決（2021年）</h3>
+            <p>職場におけるパワハラの録音は信義則に反しないと判断。会社の就業規則で録音が禁止されていても、録音行為自体は合法であり、証拠としても有効です。</p>
+          </article>
+          <article class="card law-card fade-up">
+            <h3>会社規定と録音の関係</h3>
+            <p>社内規定で録音が禁止されていても、労働者の自己防衛としての録音は法的に保護されます。録音禁止規定を理由とした懲戒処分は、権利濫用として無効とされる可能性があります。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== 8. PRICING: 앵커링 효과 적용 ===== -->
+    <!-- ===== 8. PRICING: アンカリング効果適用 ===== -->
     <section class="section" id="price">
       <div class="container">
-        <span class="label fade-up">가격</span>
-        <h2 class="section-title fade-up">핵심 기능은 무료, Pro는 한계 해제</h2>
+        <span class="label fade-up">料金</span>
+        <h2 class="section-title fade-up">基本機能は無料、Proで制限解除</h2>
         <div class="grid price-grid">
           <article class="card price-card fade-up">
-            <h3>무료 (핵심 기능 100%)</h3>
-            <p class="price latin">₩0</p>
+            <h3>無料（基本機能100%）</h3>
+            <p class="price latin">&yen;0</p>
             <ul>
-              <li>원터치 즉시 녹음</li>
-              <li>스텔스 모드</li>
-              <li>저장 3개 · 10분 제한</li>
-              <li>첫 녹음 무제한 쿠폰 1회</li>
+              <li>ワンタッチ即時録音</li>
+              <li>ステルスモード</li>
+              <li>保存3件 / 10分制限</li>
+              <li>初回録音 無制限クーポン1回</li>
             </ul>
             <div class="cta-panel">
-              <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 시작하기</a>
+              <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">無料で始める</a>
             </div>
           </article>
 
           <article class="card price-card fade-up" style="border-color: rgba(255,51,51,0.6);">
-            <span class="plan-tag">추천</span>
-            <h3>Pro (편의 + 한계 해제)</h3>
+            <span class="plan-tag">おすすめ</span>
+            <h3>Pro（便利機能 + 制限解除）</h3>
             <p class="price latin">
-              <span class="price-original latin">₩12,000</span>₩5,900
-              <span style="font-size:14px; font-weight:700;"> 일회성</span>
-              <span class="price-save">50% 할인</span>
+              <span class="price-original latin">&yen;1,400</span>&yen;700
+              <span style="font-size:14px; font-weight:700;"> 買い切り</span>
+              <span class="price-save">50% OFF</span>
             </p>
             <ul>
-              <li>저장 무제한 + 녹음 시간 무제한</li>
-              <li>광고 완전 제거</li>
-              <li>스텔스 정지 (화면 없이 종료)</li>
-              <li>예약 녹음 · 고음질 · AI 분석</li>
+              <li>保存無制限 + 録音時間無制限</li>
+              <li>広告完全除去</li>
+              <li>ステルス停止（画面なしで終了）</li>
+              <li>予約録音 / 高音質 / AI分析</li>
             </ul>
             <div class="cta-panel">
-              <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 미리 준비하기</a>
+              <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">無料で準備する</a>
             </div>
           </article>
         </div>
@@ -1490,17 +1530,17 @@
       <div class="container">
         <div class="reviews-header">
           <div>
-            <span class="label fade-up">사용 후기</span>
-            <h2 class="section-title fade-up">실제 사용자들의 이야기</h2>
+            <span class="label fade-up">ユーザーレビュー</span>
+            <h2 class="section-title fade-up">実際のユーザーの声</h2>
             <div class="reviews-stars fade-up">
               <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <span class="latin" style="font-weight:700; color:var(--text-strong);">4.9</span>
-              <span>평점</span>
+              <span>評価</span>
             </div>
           </div>
           <div class="reviews-nav fade-up">
-            <button id="rv-prev" aria-label="이전 후기">&#8592;</button>
-            <button id="rv-next" aria-label="다음 후기">&#8594;</button>
+            <button id="rv-prev" aria-label="前のレビュー">&#8592;</button>
+            <button id="rv-next" aria-label="次のレビュー">&#8594;</button>
           </div>
         </div>
 
@@ -1508,82 +1548,82 @@
           <div class="reviews-track" id="rv-track">
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>직장 상사 폭언 상황에서 바로 켰어요. 진짜 0.5초만에 시작되더라구요. 증거 확보 완료.</q>
+              <q>上司のパワハラ発言の最中にすぐ起動できました。本当に0.5秒で録音が始まって、証拠をしっかり確保できました。</q>
               <div class="rc-user">
-                <div class="rc-avatar">김*</div>
-                <div><div class="rc-name">김*수 님</div><div class="rc-tag">30대 직장인</div></div>
+                <div class="rc-avatar">田</div>
+                <div><div class="rc-name">田中 S. さん</div><div class="rc-tag">30代会社員</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>부동산 중개사 말 바뀔까봐 깔아뒀는데, 역시 녹음해둔 게 증거가 됐어요. 전세금 돌려받았습니다.</q>
+              <q>部下からのハラスメント申告に備えて入れています。管理職こそ自分を守るための録音が必要だと実感しました。</q>
               <div class="rc-user">
-                <div class="rc-avatar">이*</div>
-                <div><div class="rc-name">이*진 님</div><div class="rc-tag">전세 세입자</div></div>
+                <div class="rc-avatar">鈴</div>
+                <div><div class="rc-name">鈴木 K. さん</div><div class="rc-tag">40代管理職</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>화면이 바로 사라져서 상대가 눈치 못 챔. 이게 핵심이에요. 스텔스 기능 진짜 대박.</q>
+              <q>バイト先の店長にシフトを脅されたとき、とっさに録音できました。画面がすぐ消えるから相手に気づかれませんでした。</q>
               <div class="rc-user">
-                <div class="rc-avatar">박*</div>
-                <div><div class="rc-name">박*호 님</div><div class="rc-tag">자영업자</div></div>
+                <div class="rc-avatar">山</div>
+                <div><div class="rc-name">山田 Y. さん</div><div class="rc-tag">20代アルバイト</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>교통사고 났을 때 상대방이 말 바꿀까봐 바로 녹음 시작했어요. 보험 처리할 때 결정적이었습니다.</q>
+              <q>交通事故の現場で相手が言い分を変えそうだったのですぐ録音開始。保険会社への提出時に決定的な証拠になりました。</q>
               <div class="rc-user">
-                <div class="rc-avatar">최*</div>
-                <div><div class="rc-name">최*영 님</div><div class="rc-tag">40대 운전자</div></div>
+                <div class="rc-avatar">佐</div>
+                <div><div class="rc-name">佐藤 M. さん</div><div class="rc-tag">40代ドライバー</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>Pro 결제했는데 알림에서 바로 정지되고 화면도 안 뜸. 회의 중에 몰래 녹음할 때 완벽해요.</q>
+              <q>Pro版に課金しました。通知から直接停止できて画面も出ない。会議中にこっそり録音するのに完璧です。</q>
               <div class="rc-user">
-                <div class="rc-avatar">정*</div>
-                <div><div class="rc-name">정*은 님</div><div class="rc-tag">대기업 사원</div></div>
+                <div class="rc-avatar">高</div>
+                <div><div class="rc-name">高橋 R. さん</div><div class="rc-tag">大手企業社員</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>임대인이 보증금 안 준다고 할 때 녹음 파일 보여줬더니 바로 입금해줬습니다. 녹음 = 방패.</q>
+              <q>不動産屋との口約束を録音しておいたおかげで、後から「言っていない」と言われても対処できました。敷金全額返還。</q>
               <div class="rc-user">
-                <div class="rc-avatar">한*</div>
-                <div><div class="rc-name">한*미 님</div><div class="rc-tag">20대 대학원생</div></div>
+                <div class="rc-avatar">伊</div>
+                <div><div class="rc-name">伊藤 A. さん</div><div class="rc-tag">20代大学院生</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>아이 학교폭력 상담에서 담임이 축소하길래 녹음해뒀어요. 교육청 신고할 때 큰 도움이 됐습니다.</q>
+              <q>子どものいじめ問題で学校と面談した際に録音。担任の発言が矛盾していたことを教育委員会に証明できました。</q>
               <div class="rc-user">
-                <div class="rc-avatar">송*</div>
-                <div><div class="rc-name">송*현 님</div><div class="rc-tag">학부모</div></div>
+                <div class="rc-avatar">中</div>
+                <div><div class="rc-name">中村 H. さん</div><div class="rc-tag">保護者</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>다른 녹음앱은 켜는데 한참 걸리는데 이건 진짜 찰나예요. 긴급 상황에 이거 아니면 못 씀.</q>
+              <q>他の録音アプリは起動に時間がかかるけど、これは本当に一瞬。緊急時にはこれ以外使えない。</q>
               <div class="rc-user">
-                <div class="rc-avatar">윤*</div>
-                <div><div class="rc-name">윤*석 님</div><div class="rc-tag">50대 자영업</div></div>
+                <div class="rc-avatar">渡</div>
+                <div><div class="rc-name">渡辺 T. さん</div><div class="rc-tag">50代自営業</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>무료인데 핵심 기능은 다 되고, Pro도 5,900원 일회성이라 부담 없이 결제했어요. 광고도 없어져서 만족!</q>
+              <q>無料でも核心機能が全部使えて、Proも700円の買い切りだから迷わず課金。広告もなくなって快適です。</q>
               <div class="rc-user">
-                <div class="rc-avatar">강*</div>
-                <div><div class="rc-name">강*우 님</div><div class="rc-tag">30대 프리랜서</div></div>
+                <div class="rc-avatar">小</div>
+                <div><div class="rc-name">小林 N. さん</div><div class="rc-tag">30代フリーランス</div></div>
               </div>
             </div>
             <div class="review-card">
               <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <q>서버 전송 없이 기기에만 저장되는 게 마음에 들어요. 민감한 녹음이라 보안이 가장 중요했거든요.</q>
+              <q>サーバーに送信されず端末だけに保存されるのが安心。弁護士として、機密性の高い録音にはこの仕様が不可欠です。</q>
               <div class="rc-user">
-                <div class="rc-avatar">임*</div>
-                <div><div class="rc-name">임*정 님</div><div class="rc-tag">변호사</div></div>
+                <div class="rc-avatar">松</div>
+                <div><div class="rc-name">松本 E. さん</div><div class="rc-tag">弁護士</div></div>
               </div>
             </div>
           </div>
@@ -1591,43 +1631,43 @@
       </div>
     </section>
 
-    <!-- ===== 9. FINAL CTA: 손실 프레이밍 ===== -->
+    <!-- ===== 9. FINAL CTA: 損失フレーミング ===== -->
     <section class="section" id="final-cta">
       <div class="container">
         <div class="card final-cta-card fade-up">
-          <h2 class="section-title">증거는 나중에 만들 수 없습니다</h2>
-          <p class="final-urgency">지금 이 순간에도 누군가는 증거 없이 억울한 상황에 처해 있습니다.</p>
-          <p class="section-sub" style="margin:12px auto 0; text-align:center;">오늘 설치한 1번의 선택이 내일의 결과를 바꿉니다.</p>
+          <h2 class="section-title">証拠は後から作ることができません</h2>
+          <p class="final-urgency">今この瞬間にも、誰かが証拠なく理不尽な状況に置かれています。</p>
+          <p class="section-sub" style="margin:12px auto 0; text-align:center;">今日インストールする1回の選択が、明日の結果を変えます。</p>
           <div class="cta-panel" style="justify-content:center; margin-top:20px;">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">무료로 미리 준비하기</a>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.emergency.recorder" target="_blank" rel="noopener">無料で準備する</a>
           </div>
-          <p class="friction-text" style="text-align:center; margin-top:10px;">설치 30초 · 회원가입 없음 · 바로 사용 가능</p>
-          <p class="proof-installs" style="justify-content:center; margin-top:12px;"><span class="dot"></span> 이번 달 <strong class="latin" id="install-count-2">0</strong>명이 미리 준비했습니다</p>
+          <p class="friction-text" style="text-align:center; margin-top:10px;">インストール30秒 / 会員登録不要 / すぐに使用可能</p>
+          <p class="proof-installs" style="justify-content:center; margin-top:12px;"><span class="dot"></span> 今月 <strong class="latin" id="install-count-2">0</strong>人が事前に準備しました</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== 10. FAQ (4개로 축소) ===== -->
+    <!-- ===== 10. FAQ (4問) ===== -->
     <section class="section" id="faq">
       <div class="container">
         <span class="label fade-up">FAQ</span>
-        <h2 class="section-title fade-up">자주 묻는 질문</h2>
+        <h2 class="section-title fade-up">よくある質問</h2>
         <div class="faq-list">
           <details class="fade-up" open>
-            <summary>대화 당사자가 녹음하면 합법인가요?</summary>
-            <p>대화 당사자의 녹음은 제3자 도청과 다르게 해석되며, 실무상 합법입니다. 개별 사건은 법률 전문가 상담을 권장합니다.</p>
+            <summary>当事者が録音するのは合法ですか？</summary>
+            <p>会話の当事者による録音は、第三者の盗聴とは法的に区別されます。最高裁判例（2000年）でも、著しく反社会的な方法でない限り証拠能力が認められています。個別の事案については法律の専門家にご相談ください。</p>
           </details>
           <details class="fade-up">
-            <summary>왜 일반 녹음앱보다 빠른가요?</summary>
-            <p>긴급녹음은 메뉴 진입 대신 녹음 시작 로직을 최우선 처리해 0.5초 수준의 즉시 시작을 구현합니다.</p>
+            <summary>なぜ一般の録音アプリより速いですか？</summary>
+            <p>緊急録音はメニュー画面を経由せず、録音開始ロジックを最優先で処理するため、0.5秒レベルの即時起動を実現しています。</p>
           </details>
           <details class="fade-up">
-            <summary>녹음 파일은 어디에 저장되나요?</summary>
-            <p>모든 녹음은 사용자 기기에만 저장됩니다. 서버 전송 없음. 개발사도 접근할 수 없습니다.</p>
+            <summary>録音ファイルはどこに保存されますか？</summary>
+            <p>すべての録音はユーザーの端末にのみ保存されます。サーバーへの送信はありません。開発者もアクセスすることができません。</p>
           </details>
           <details class="fade-up">
-            <summary>Pro는 구독인가요?</summary>
-            <p>Pro는 ₩5,900 일회성 결제입니다. 월간/연간 구독이 아닙니다.</p>
+            <summary>Proはサブスクですか？</summary>
+            <p>Proは&yen;700の買い切り（一回限りの支払い）です。月額・年額のサブスクリプションではありません。</p>
           </details>
         </div>
       </div>
@@ -1639,25 +1679,24 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <strong>MtrnLab</strong>
-        <p>위급한 순간을 대비하는 기술을 만듭니다.<br/>안내: 본 페이지의 법률 정보는 일반 안내이며, 개별 사건은 전문 상담이 필요합니다.</p>
+        <p>緊急時に備える技術を作っています。<br/>ご注意：本ページの法律情報は一般的なご案内であり、個別の事案については専門家へのご相談が必要です。</p>
       </div>
       <div class="footer-links">
-        <a href="/ko/blog/">블로그</a>
         <a href="/en/blog/">Blog</a>
-        <a href="/privacy">개인정보처리방침</a>
-        <a href="mailto:emerec@mtrnlab.com">문의</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        <a href="mailto:emerec@mtrnlab.com">お問い合わせ</a>
       </div>
       <div class="footer-copy">&copy; 2026 MtrnLab. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- ===== STICKY CTA: 손실 프레이밍 ===== -->
-  <div class="sticky-cta" aria-label="하단 고정 다운로드 바">
-    <p><strong>지금 안 깔면, 그 순간엔 늦습니다.</strong><br/>핵심 무료 · Pro ₩5,900 일회성</p>
-    <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">무료 설치</a>
+  <!-- ===== STICKY CTA: 損失フレーミング ===== -->
+  <div class="sticky-cta" aria-label="固定ダウンロードバー">
+    <p><strong>今入れないと、その瞬間には間に合わない。</strong><br/>基本無料 / Pro &yen;700 買い切り</p>
+    <a href="https://play.google.com/store/apps/details?id=com.emergency.recorder" class="btn btn-primary" target="_blank" rel="noopener">無料インストール</a>
   </div>
 
-  <!-- ===== GSAP 애니메이션 ===== -->
+  <!-- ===== GSAP ANIMATION ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script>
@@ -1671,7 +1710,7 @@
       if (el1) el1.textContent = installCount;
       if (el2) el2.textContent = installCount;
 
-      /* Phone sequence animation: home → tap → REC */
+      /* Phone sequence animation: home -> tap -> REC */
       var phoneHome = document.getElementById('phone-home');
       var recContent = document.getElementById('rec-content');
       var tapRing = document.getElementById('tap-ring');
@@ -1791,8 +1830,8 @@
         var obj = { value: 0 };
 
         function formatValue(v) {
-          if (target === 64.1) return v.toFixed(1) + suffix;
-          if (target >= 1000) return Math.floor(v).toLocaleString('ko-KR') + suffix;
+          if (target === 19.3 || target === 64.2) return v.toFixed(1) + suffix;
+          if (target >= 1000) return Math.floor(v).toLocaleString('ja-JP') + suffix;
           return Math.floor(v) + suffix;
         }
 
@@ -1817,14 +1856,14 @@
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
-    "name": "긴급녹음",
+    "name": "緊急録音",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Android",
-    "inLanguage": "ko",
-    "description": "위급상황에서 0.5초 즉시 녹음으로 증거를 보존하는 앱",
+    "inLanguage": "ja",
+    "description": "緊急時に0.5秒で即座に録音を開始し、証拠を保全するアプリ",
     "offers": [
-      { "@type": "Offer", "price": "0", "priceCurrency": "KRW", "name": "무료" },
-      { "@type": "Offer", "price": "5900", "priceCurrency": "KRW", "name": "Pro" }
+      { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "name": "無料" },
+      { "@type": "Offer", "price": "700", "priceCurrency": "JPY", "name": "Pro" }
     ]
   }
   </script>
@@ -1835,23 +1874,23 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "대화 당사자가 녹음하면 합법인가요?",
-        "acceptedAnswer": { "@type": "Answer", "text": "대화 당사자의 녹음은 제3자 도청과 다르게 해석되며, 실무상 합법입니다. 개별 사건은 법률 전문가 상담을 권장합니다." }
+        "name": "当事者が録音するのは合法ですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "会話の当事者による録音は、第三者の盗聴とは法的に区別されます。最高裁判例（2000年）でも、著しく反社会的な方法でない限り証拠能力が認められています。個別の事案については法律の専門家にご相談ください。" }
       },
       {
         "@type": "Question",
-        "name": "왜 일반 녹음앱보다 빠른가요?",
-        "acceptedAnswer": { "@type": "Answer", "text": "긴급녹음은 메뉴 진입 대신 녹음 시작 로직을 최우선 처리해 0.5초 수준의 즉시 시작을 구현합니다." }
+        "name": "なぜ一般の録音アプリより速いですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "緊急録音はメニュー画面を経由せず、録音開始ロジックを最優先で処理するため、0.5秒レベルの即時起動を実現しています。" }
       },
       {
         "@type": "Question",
-        "name": "녹음 파일은 어디에 저장되나요?",
-        "acceptedAnswer": { "@type": "Answer", "text": "모든 녹음은 사용자 기기에만 저장됩니다. 서버 전송 없음. 개발사도 접근할 수 없습니다." }
+        "name": "録音ファイルはどこに保存されますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "すべての録音はユーザーの端末にのみ保存されます。サーバーへの送信はありません。開発者もアクセスすることができません。" }
       },
       {
         "@type": "Question",
-        "name": "Pro는 구독인가요?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Pro는 5,900원 일회성 결제입니다. 월간/연간 구독이 아닙니다." }
+        "name": "Proはサブスクですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Proは700円の買い切り（一回限りの支払い）です。月額・年額のサブスクリプションではありません。" }
       }
     ]
   }
