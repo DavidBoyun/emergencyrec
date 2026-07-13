@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>긴급녹음 - Play Store 스크린샷 (1080x1920)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0D0D0D;
+    --bg-mid: #1A1A1A;
+    --red: #FF3B30;
+    --red-dark: #CC0000;
+    --white: #FFFFFF;
+    --gray-sub: #888888;
+    --gray-light: #AAAAAA;
+    --bezel: #222222;
+    --gold: #FFD700;
+    --badge-bg: rgba(255, 59, 48, 0.15);
+    --badge-border: rgba(255, 59, 48, 0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #080808;
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 40px 20px;
+  }
+
+  /* ===== CONTROLS ===== */
+  .controls {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .controls h1 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .controls h1 .red { color: var(--red); }
+
+  .controls p {
+    color: var(--gray-sub);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .controls button {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 6px;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .controls button:hover { background: var(--red-dark); }
+
+  .controls button.secondary {
+    background: #333;
+  }
+
+  .controls button.secondary:hover { background: #444; }
+
+  .controls button.active {
+    background: var(--red);
+    box-shadow: 0 0 16px rgba(255,59,48,0.4);
+  }
+
+  /* ===== GRID VIEW ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grid-item {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+  }
+
+  .grid-item:hover {
+    border-color: var(--red);
+    transform: translateY(-4px);
+  }
+
+  .grid-item .thumb {
+    width: 100%;
+    aspect-ratio: 1080 / 1920;
+    overflow: hidden;
+  }
+
+  .grid-item .thumb-inner {
+    width: 1080px;
+    height: 1920px;
+    transform-origin: top left;
+    transform: scale(calc(100cqi / 1080));
+    container-type: inline-size;
+  }
+
+  .grid-label {
+    text-align: center;
+    padding: 10px 6px;
+    background: #111;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-light);
+  }
+
+  /* ===== OVERLAY ===== */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overlay.active { display: flex; }
+
+  .overlay-content {
+    position: relative;
+    max-height: 96vh;
+    overflow: auto;
+  }
+
+  .overlay-screenshot {
+    width: 1080px;
+    height: 1920px;
+    transform-origin: top center;
+  }
+
+  .overlay-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .overlay-close:hover { background: rgba(255,59,48,0.5); }
+
+  .overlay-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .overlay-nav:hover { background: rgba(255,59,48,0.4); }
+  .overlay-nav.prev { left: 20px; }
+  .overlay-nav.next { right: 20px; }
+
+  .overlay-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gray-light);
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 1010;
+  }
+
+  /* ===== CAPTURE MODE ===== */
+  body.capture-mode .controls,
+  body.capture-mode .grid,
+  body.capture-mode .overlay {
+    display: none !important;
+  }
+
+  body.capture-mode .capture-container {
+    display: block !important;
+  }
+
+  .capture-container {
+    display: none;
+  }
+
+  .capture-container .capture-nav {
+    text-align: center;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: #080808;
+    padding: 16px;
+    z-index: 100;
+  }
+
+  .capture-container .capture-nav button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    margin: 0 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  .capture-container .capture-nav button:hover { background: #555; }
+  .capture-container .capture-nav button.exit-capture { background: var(--red); }
+
+  .capture-single {
+    display: none;
+    width: 1080px;
+    margin: 0 auto;
+  }
+
+  .capture-single.active { display: block; }
+
+  /* ===== SCREENSHOT BASE ===== */
+  .screenshot {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+  }
+
+  /* Red glow at top */
+  .screenshot::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(255,59,48,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ===== PHONE FRAME ===== */
+  .phone-frame {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 680px;
+    height: 1200px;
+    border-radius: 40px;
+    border: 8px solid var(--bezel);
+    background: #000;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(0,0,0,0.3);
+    z-index: 5;
+  }
+
+  .phone-frame .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 28px;
+    background: var(--bezel);
+    border-radius: 0 0 18px 18px;
+    z-index: 10;
+  }
+
+  .phone-frame .notch::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #333;
+  }
+
+  .phone-frame .screen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .phone-frame .screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===== TEXT ELEMENTS ===== */
+  .ss-headline {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    text-align: center;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.3;
+    color: var(--white);
+    z-index: 10;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  }
+
+  .ss-headline .red { color: var(--red); }
+
+  .ss-subtitle {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--gray-sub);
+    z-index: 10;
+  }
+
+  .ss-badge {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--badge-bg);
+    border: 1px solid var(--badge-border);
+    color: var(--red);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 8px 24px;
+    border-radius: 50px;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  /* ===== SCREENSHOT #1 ===== */
+  .ss1 .ss-headline { top: 100px; }
+  .ss1 .ss-subtitle { top: 195px; }
+  .ss1 .phone-frame { top: 320px; }
+
+  .ss1 .tap-indicator {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+
+  .ss1 .tap-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--red);
+    position: relative;
+    animation: tapPulse 2s ease-in-out infinite;
+  }
+
+  .ss1 .tap-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255,59,48,0.2);
+    animation: tapFill 2s ease-in-out infinite;
+  }
+
+  .ss1 .tap-finger {
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    font-size: 40px;
+    transform: rotate(-15deg);
+    animation: tapBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+  }
+
+  @keyframes tapPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
+  }
+
+  @keyframes tapFill {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes tapBounce {
+    0%, 100% { transform: rotate(-15deg) translateY(0); }
+    50% { transform: rotate(-15deg) translateY(-8px); }
+  }
+
+  /* ===== SCREENSHOT #2 (CSS LOCK SCREEN) ===== */
+  .ss2 .ss-headline { top: 100px; }
+  .ss2 .ss-subtitle { top: 195px; }
+  .ss2 .phone-frame { top: 320px; }
+  .ss2 .ss-badge { bottom: 100px; }
+
+  .lock-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0a0a14 0%, #0f0f1a 30%, #0a0a14 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+  }
+
+  .lock-screen .ls-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 60px;
+  }
+
+  .lock-screen .ls-status-bar .ls-carrier { font-weight: 500; }
+
+  .lock-screen .ls-status-bar .ls-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lock-screen .ls-status-bar .ls-icons .rec-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: recDotBlink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes recDotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lock-screen .ls-time {
+    font-size: 96px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: -4px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .lock-screen .ls-date {
+    font-size: 20px;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 120px;
+  }
+
+  .lock-screen .ls-wallpaper-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(40,40,60,0.5) 0%, transparent 70%);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .lock-screen .ls-swipe-hint {
+    position: absolute;
+    bottom: 50px;
+    color: #555;
+    font-size: 15px;
+  }
+
+  .lock-screen .ls-lock-icon {
+    font-size: 28px;
+    color: #666;
+    margin-bottom: 6px;
+  }
+
+  /* ===== SCREENSHOT #3 ===== */
+  .ss3 .ss-headline { top: 100px; }
+  .ss3 .ss-subtitle { top: 195px; }
+  .ss3 .phone-frame { top: 320px; }
+  .ss3 .ss-badge { bottom: 100px; }
+
+  /* ===== SCREENSHOT #4 ===== */
+  .ss4 .ss-headline { top: 100px; }
+  .ss4 .ss-subtitle { top: 195px; }
+  .ss4 .phone-frame { top: 320px; }
+  .ss4 .ss-badge { bottom: 100px; }
+
+  /* ===== SCREENSHOT #5 ===== */
+  .ss5 .ss-headline { top: 100px; }
+  .ss5 .ss-subtitle { top: 195px; }
+  .ss5 .phone-frame { top: 320px; }
+  .ss5 .ss-badge { bottom: 100px; }
+
+  /* ===== SCREENSHOT #6 ===== */
+  .ss6 .ss-headline { top: 80px; }
+  .ss6 .ss-subtitle { top: 175px; }
+  .ss6 .phone-frame { top: 280px; height: 1280px; }
+  .ss6 .ss-badge { bottom: 80px; }
+
+  .ss6 .phone-frame .screen img {
+    object-position: top;
+  }
+
+  /* ===== SCREENSHOT #7 (CSS MOCKUP) ===== */
+  .ss7 .ss-headline { top: 100px; }
+  .ss7 .ss-subtitle { top: 195px; }
+  .ss7 .phone-frame { top: 300px; height: 1240px; }
+
+  .home-mockup {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-mockup .hm-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #bbb;
+  }
+
+  .home-mockup .hm-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 8px 0;
+    padding: 40px 16px 20px;
+    align-content: start;
+  }
+
+  .home-mockup .hm-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+  }
+
+  .home-mockup .hm-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+
+  .home-mockup .hm-label {
+    font-size: 11px;
+    color: #ccc;
+    text-align: center;
+  }
+
+  .home-mockup .hm-widget {
+    grid-column: 1 / -1;
+    margin: 16px 8px;
+    background: linear-gradient(135deg, var(--red) 0%, #CC0000 100%);
+    border-radius: 24px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 32px rgba(255,59,48,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-mockup .hm-widget::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .home-mockup .hm-widget-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .home-mockup .hm-widget-text h4 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .home-mockup .hm-widget-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .home-mockup .hm-qs {
+    background: rgba(0,0,0,0.4);
+    margin: 0 8px 8px;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .home-mockup .hm-qs-title {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .home-mockup .hm-qs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .home-mockup .hm-qs-tile {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 22px;
+    position: relative;
+  }
+
+  .home-mockup .hm-qs-tile.active-tile {
+    background: var(--red);
+    box-shadow: 0 4px 16px rgba(255,59,48,0.4);
+  }
+
+  .home-mockup .hm-qs-tile span {
+    font-size: 9px;
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  .home-mockup .hm-qs-tile.active-tile span { color: #fff; }
+
+  .home-mockup .hm-dock {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 40px 18px;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .home-mockup .hm-dock-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  /* ===== SCREENSHOT #8 (BRANDING) ===== */
+  .ss8 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 80px;
+  }
+
+  .ss8 .ss8-main-text {
+    font-size: 86px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 60px;
+    letter-spacing: -2px;
+    z-index: 10;
+  }
+
+  .ss8 .ss8-main-text .red { color: var(--red); }
+
+  .ss8 .ss8-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+    margin-bottom: 60px;
+    z-index: 10;
+  }
+
+  .ss8 .ss8-feat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gray-light);
+  }
+
+  .ss8 .ss8-feat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .ss8 .ss8-app-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(255,59,48,0.4);
+    z-index: 10;
+  }
+
+  .ss8 .ss8-cta {
+    background: var(--red);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 900;
+    padding: 20px 60px;
+    border-radius: 60px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(255,59,48,0.4);
+    z-index: 10;
+  }
+
+  .ss8 .ss8-tagline {
+    font-size: 22px;
+    color: var(--gray-sub);
+    font-weight: 400;
+    z-index: 10;
+  }
+
+  /* ===== RESPONSIVE GRID (use container queries for thumbs) ===== */
+  @supports not (container-type: inline-size) {
+    .grid-item .thumb-inner {
+      transform: scale(0.25);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== CONTROLS ===== -->
+<div class="controls">
+  <h1><span class="red">긴급녹음</span> Play Store 스크린샷</h1>
+  <p>1080 x 1920px | 클릭하면 실제 크기로 확인 | 캡처 모드에서 DevTools로 노드 캡처 가능</p>
+  <button onclick="enterCaptureMode()">캡처 모드</button>
+</div>
+
+<!-- ===== GRID VIEW ===== -->
+<div class="grid" id="grid">
+</div>
+
+<!-- ===== OVERLAY ===== -->
+<div class="overlay" id="overlay">
+  <button class="overlay-close" onclick="closeOverlay()" title="닫기">&times;</button>
+  <button class="overlay-nav prev" onclick="navOverlay(-1)" title="이전">&#8249;</button>
+  <button class="overlay-nav next" onclick="navOverlay(1)" title="다음">&#8250;</button>
+  <div class="overlay-content" id="overlayContent"></div>
+  <div class="overlay-counter" id="overlayCounter"></div>
+</div>
+
+<!-- ===== CAPTURE MODE ===== -->
+<div class="capture-container" id="captureContainer">
+  <div class="capture-nav">
+    <button onclick="captureNav(-1)">&larr; 이전</button>
+    <span id="captureLabel" style="color:#aaa;margin:0 16px;font-size:14px;font-weight:700;">1 / 8</span>
+    <button onclick="captureNav(1)">다음 &rarr;</button>
+    <button class="exit-capture" onclick="exitCaptureMode()" style="margin-left:20px;">캡처 모드 종료</button>
+  </div>
+  <div id="captureSingles"></div>
+</div>
+
+<!-- ===== ALL 8 SCREENSHOTS (hidden, used as source) ===== -->
+<div id="screenshotSource" style="position:absolute;left:-99999px;top:0;">
+
+  <!-- #1: 앱 한 번이면 즉시 녹음 -->
+  <div class="screenshot ss1" data-label="#1 원터치 녹음">
+    <div class="ss-headline">앱 <span class="red">한 번</span>이면<br>즉시 녹음</div>
+    <div class="ss-subtitle">0.5초 만에 녹음 시작</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <img src="../../screen shot/실제 스크린샷/KakaoTalk_20260219_142508486_14.jpg" alt="앱 서랍에서 긴급녹음 아이콘">
+      </div>
+      <div class="tap-indicator">
+        <div class="tap-ring"></div>
+        <div class="tap-finger">👆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #2: 화면이 사라져 아무도 모릅니다 -->
+  <div class="screenshot ss2" data-label="#2 스텔스 모드">
+    <div class="ss-headline"><span class="red">화면이 사라져</span><br>아무도 모릅니다</div>
+    <div class="ss-subtitle">스텔스 모드 지원</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="lock-screen">
+          <div class="ls-status-bar">
+            <span class="ls-carrier">KT</span>
+            <div class="ls-icons">
+              <div class="rec-dot"></div>
+              <span style="font-size:12px;">LTE</span>
+              <span style="font-size:12px;">&#9679;48</span>
+            </div>
+          </div>
+          <div class="ls-lock-icon">&#128274;</div>
+          <div class="ls-time">9:41</div>
+          <div class="ls-date">2월 19일 수요일</div>
+          <div class="ls-wallpaper-circle"></div>
+          <div class="ls-swipe-hint">위로 밀어서 잠금 해제</div>
+        </div>
+      </div>
+    </div>
+    <div class="ss-badge">화면 꺼져도 녹음은 계속</div>
+  </div>
+
+  <!-- #3: 알림바에서 조용히 제어 -->
+  <div class="screenshot ss3" data-label="#3 알림 제어">
+    <div class="ss-headline"><span class="red">알림바</span>에서<br>조용히 제어</div>
+    <div class="ss-subtitle">녹음 중에도 자연스럽게</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <img src="../../screen shot/실제 스크린샷/KakaoTalk_20260219_142508486_16.jpg" alt="알림 패널 녹음 제어">
+      </div>
+    </div>
+    <div class="ss-badge">다른 알림 사이에 자연스럽게</div>
+  </div>
+
+  <!-- #4: 실시간 녹음 상태 확인 -->
+  <div class="screenshot ss4" data-label="#4 녹음 화면">
+    <div class="ss-headline"><span class="red">실시간</span> 녹음<br>상태 확인</div>
+    <div class="ss-subtitle">한눈에 보는 녹음 현황</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <img src="../../screen shot/실제 스크린샷/KakaoTalk_20260219_142508486_12.jpg" alt="녹음 화면 00:14">
+      </div>
+    </div>
+    <div class="ss-badge">맥동하는 타이머로 생생하게</div>
+  </div>
+
+  <!-- #5: 녹음 파일 간편 관리 -->
+  <div class="screenshot ss5" data-label="#5 파일 관리">
+    <div class="ss-headline"><span class="red">녹음 파일</span><br>간편 관리</div>
+    <div class="ss-subtitle">재생, 공유, 삭제를 한 곳에서</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <img src="../../screen shot/실제 스크린샷/KakaoTalk_20260219_142508486_10.jpg" alt="녹음 목록">
+      </div>
+    </div>
+    <div class="ss-badge">정렬 &middot; 검색 &middot; 즐겨찾기</div>
+  </div>
+
+  <!-- #6: 증거 없으면 얼마를 잃을까요? -->
+  <div class="screenshot ss6" data-label="#6 프리미엄">
+    <div class="ss-headline">증거 없으면<br><span class="red">얼마를 잃을까요?</span></div>
+    <div class="ss-subtitle">프리미엄으로 완벽한 증거 확보</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <img src="../../screen shot/실제 스크린샷/KakaoTalk_20260219_142508486_02.jpg" alt="프리미엄 화면" style="object-position: top;">
+      </div>
+    </div>
+    <div class="ss-badge" style="color:var(--gold);background:rgba(255,215,0,0.12);border-color:rgba(255,215,0,0.35);">&#8361;5,900 한 번이면 평생</div>
+  </div>
+
+  <!-- #7: 위젯으로 더 빠르게 (CSS mockup) -->
+  <div class="screenshot ss7" data-label="#7 위젯">
+    <div class="ss-headline"><span class="red">위젯</span>으로<br>더 빠르게</div>
+    <div class="ss-subtitle">홈 화면에서 바로 녹음</div>
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="home-mockup">
+          <div class="hm-status">
+            <span>9:41</span>
+            <span style="font-size:11px;">KT &nbsp; LTE &nbsp; &#9679;85</span>
+          </div>
+          <div class="hm-grid">
+            <!-- Row 1 -->
+            <div class="hm-app"><div class="hm-icon" style="background:#34C759;">&#128222;</div><div class="hm-label">전화</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#5AC8FA;">&#128172;</div><div class="hm-label">메시지</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#FF9500;">&#128247;</div><div class="hm-label">카메라</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#007AFF;">&#9881;</div><div class="hm-label">설정</div></div>
+            <!-- Widget -->
+            <div class="hm-widget">
+              <div class="hm-widget-icon">&#127908;</div>
+              <div class="hm-widget-text">
+                <h4>긴급녹음</h4>
+                <p>탭하면 즉시 녹음 시작</p>
+              </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="hm-app"><div class="hm-icon" style="background:#5856D6;">&#128197;</div><div class="hm-label">캘린더</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#FF2D55;">&#127925;</div><div class="hm-label">음악</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#64D2FF;">&#9729;</div><div class="hm-label">날씨</div></div>
+            <div class="hm-app"><div class="hm-icon" style="background:#30D158;">&#128178;</div><div class="hm-label">토스</div></div>
+          </div>
+          <!-- Quick Settings -->
+          <div class="hm-qs">
+            <div class="hm-qs-title">빠른 설정 타일</div>
+            <div class="hm-qs-grid">
+              <div class="hm-qs-tile" style="background:rgba(52,199,89,0.3);">&#128246;<span>Wi-Fi</span></div>
+              <div class="hm-qs-tile" style="background:rgba(0,122,255,0.3);">&#9889;<span>블루투스</span></div>
+              <div class="hm-qs-tile active-tile">&#127908;<span>긴급녹음</span></div>
+              <div class="hm-qs-tile" style="background:rgba(255,255,255,0.06);">&#128262;<span>손전등</span></div>
+            </div>
+          </div>
+          <!-- Dock -->
+          <div class="hm-dock">
+            <div class="hm-dock-icon" style="background:#34C759;">&#128222;</div>
+            <div class="hm-dock-icon" style="background:#FF9500;">&#128247;</div>
+            <div class="hm-dock-icon" style="background:var(--red);">&#127908;</div>
+            <div class="hm-dock-icon" style="background:#5AC8FA;">&#128172;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #8: 1초가 증거를 결정합니다 (branding) -->
+  <div class="screenshot ss8" data-label="#8 브랜딩">
+    <div class="ss8-main-text">
+      1초가<br>
+      <span class="red">증거를</span><br>
+      결정합니다
+    </div>
+    <div class="ss8-features">
+      <div class="ss8-feat"><div class="ss8-feat-icon">&#9898;</div>원터치 녹음</div>
+      <div class="ss8-feat"><div class="ss8-feat-icon">&#128064;</div>스텔스 모드</div>
+      <div class="ss8-feat"><div class="ss8-feat-icon">&#9854;</div>무제한 저장</div>
+      <div class="ss8-feat"><div class="ss8-feat-icon">&#128737;</div>증거 보호</div>
+    </div>
+    <div class="ss8-app-icon">&#127908;</div>
+    <div class="ss8-cta">지금 무료 다운로드</div>
+    <div class="ss8-tagline">긴급할 땐 긴급녹음</div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const source = document.getElementById('screenshotSource');
+  const screenshots = Array.from(source.querySelectorAll('.screenshot'));
+  const grid = document.getElementById('grid');
+  const overlay = document.getElementById('overlay');
+  const overlayContent = document.getElementById('overlayContent');
+  const overlayCounter = document.getElementById('overlayCounter');
+  const captureContainer = document.getElementById('captureContainer');
+  const captureSingles = document.getElementById('captureSingles');
+  let currentIndex = 0;
+  let captureIndex = 0;
+
+  // Build grid
+  screenshots.forEach(function(ss, i) {
+    var item = document.createElement('div');
+    item.className = 'grid-item';
+    item.onclick = function() { openOverlay(i); };
+
+    var thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    thumb.style.containerType = 'inline-size';
+
+    var inner = document.createElement('div');
+    inner.className = 'thumb-inner';
+    var clone = ss.cloneNode(true);
+    inner.appendChild(clone);
+    thumb.appendChild(inner);
+
+    var label = document.createElement('div');
+    label.className = 'grid-label';
+    label.textContent = ss.getAttribute('data-label') || ('Screenshot ' + (i + 1));
+
+    item.appendChild(thumb);
+    item.appendChild(label);
+    grid.appendChild(item);
+  });
+
+  // Build capture singles
+  screenshots.forEach(function(ss, i) {
+    var wrap = document.createElement('div');
+    wrap.className = 'capture-single';
+    wrap.id = 'captureSingle' + i;
+    var clone = ss.cloneNode(true);
+    wrap.appendChild(clone);
+    captureSingles.appendChild(wrap);
+  });
+
+  // Overlay
+  window.openOverlay = function(index) {
+    currentIndex = index;
+    renderOverlay();
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeOverlay = function() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  window.navOverlay = function(dir) {
+    currentIndex = (currentIndex + dir + screenshots.length) % screenshots.length;
+    renderOverlay();
+  };
+
+  function renderOverlay() {
+    overlayContent.innerHTML = '';
+    var clone = screenshots[currentIndex].cloneNode(true);
+    clone.className += ' overlay-screenshot';
+
+    // Scale to fit viewport
+    var vh = window.innerHeight;
+    var scale = Math.min(1, (vh * 0.94) / 1920);
+    clone.style.transform = 'scale(' + scale + ')';
+    clone.style.transformOrigin = 'top center';
+    clone.style.marginBottom = (-(1920 * (1 - scale))) + 'px';
+
+    overlayContent.appendChild(clone);
+    overlayCounter.textContent = (currentIndex + 1) + ' / ' + screenshots.length;
+  }
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('capture-mode')) {
+      if (e.key === 'ArrowLeft') captureNav(-1);
+      if (e.key === 'ArrowRight') captureNav(1);
+      if (e.key === 'Escape') exitCaptureMode();
+      return;
+    }
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closeOverlay();
+    if (e.key === 'ArrowLeft') navOverlay(-1);
+    if (e.key === 'ArrowRight') navOverlay(1);
+  });
+
+  // Capture mode
+  window.enterCaptureMode = function() {
+    document.body.classList.add('capture-mode');
+    captureIndex = 0;
+    showCaptureSingle();
+  };
+
+  window.exitCaptureMode = function() {
+    document.body.classList.remove('capture-mode');
+    hideAllCaptureSingles();
+  };
+
+  window.captureNav = function(dir) {
+    captureIndex = (captureIndex + dir + screenshots.length) % screenshots.length;
+    showCaptureSingle();
+  };
+
+  function showCaptureSingle() {
+    hideAllCaptureSingles();
+    var el = document.getElementById('captureSingle' + captureIndex);
+    if (el) el.classList.add('active');
+    var lbl = document.getElementById('captureLabel');
+    if (lbl) lbl.textContent = (captureIndex + 1) + ' / ' + screenshots.length;
+  }
+
+  function hideAllCaptureSingles() {
+    var all = captureSingles.querySelectorAll('.capture-single');
+    for (var i = 0; i < all.length; i++) all[i].classList.remove('active');
+  }
+
+  // Fix grid scaling - use JS because container queries may not be universally supported
+  function fixGridScale() {
+    var items = grid.querySelectorAll('.grid-item');
+    items.forEach(function(item) {
+      var thumb = item.querySelector('.thumb');
+      var inner = item.querySelector('.thumb-inner');
+      if (thumb && inner) {
+        var w = thumb.getBoundingClientRect().width;
+        var scale = w / 1080;
+        inner.style.transform = 'scale(' + scale + ')';
+      }
+    });
+  }
+
+  // Run after layout
+  setTimeout(fixGridScale, 100);
+  window.addEventListener('resize', fixGridScale);
+})();
+</script>
+
+</body>
+</html>
